@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CamelCaseNaming",
+            "request": "launch",
+            "mainClass": "mehom.phubadine.lab2.CamelCaseNaming",
+            "projectName": "phubadine-1266-java-labs_a7172c9c"
+        },
+        {
+            "type": "java",
             "name": "SimpleCalculator",
             "request": "launch",
             "mainClass": "mehom.phubadine.lab2.SimpleCalculator",
