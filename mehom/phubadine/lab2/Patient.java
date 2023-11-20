@@ -1,4 +1,4 @@
-package mehom.phubadine.lab2;Z
+package mehom.phubadine.lab2;
 
 /*
  * The Patient Program:
