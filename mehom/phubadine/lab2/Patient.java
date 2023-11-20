@@ -1,6 +1,4 @@
-package mehom.phubadine.lab2;
-
-import java.util.Scanner;
+package mehom.phubadine.lab2;Z
 
 /*
  * The Patient Program:
@@ -18,26 +16,14 @@ import java.util.Scanner;
 public class Patient {
 
     public static void main(String[] args) {
-        // Scanner  name_prompt = new Scanner(System.in);
-        // Scanner  age_prompt = new Scanner(System.in);
-        // Scanner  gen_prompt = new Scanner(System.in);
+        if (args.length != 3){
+            System.err.println("Invalid number of arguments. Please provide exactly three arguments.");
+        }else{
+            System.out.println("Patient's Name : " + args[0]);
+            System.out.println("Age : " + args[1]);
+            System.out.println("Gender : " + args[2]);
+        }
         
-        // String patient_name,gender,age;
-
-        // System.out.print("Patient's Name : "); 
-        // patient_name = name_prompt.nextLine();   
-         
-        // System.out.print("Age : ");
-        // age = age_prompt.nextLine();
-
-        // System.out.print("Gender : ");
-        // gender = gen_prompt.nextLine();
-
-
-
-        System.out.println("Patient's Name : " + args[0]);
-        System.out.println("Age : " + args[1]);
-        System.out.println("Gender : " + args[2]);
 
     }
 }
