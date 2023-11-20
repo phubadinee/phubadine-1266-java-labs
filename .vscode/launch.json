@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch with Arguments Prompt",
+            "request": "launch",
+            "mainClass": "",
+            "args": "${command:SpecifyProgramArgs}"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Hello",
+            "request": "launch",
+            "mainClass": "lab1.Hello",
+            "projectName": "phubadine-1266-java-labs_a7172c9c"
+        },
+        {
+            "type": "java",
+            "name": "Patient",
+            "request": "launch",
+            "mainClass": "mehom.phubadine.lab2.Patient",
+            "projectName": "phubadine-1266-java-labs_a7172c9c"
+        }
+    ]
+}
