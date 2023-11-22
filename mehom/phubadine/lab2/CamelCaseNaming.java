@@ -1,3 +1,9 @@
+/* 
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
+
 package mehom.phubadine.lab2;
 
 public class CamelCaseNaming {
