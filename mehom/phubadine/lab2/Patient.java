@@ -13,8 +13,8 @@ package mehom.phubadine.lab2;
  * ID : 663040126-6
  * Sec : 1 
  */
-public class Patient {
 
+public class Patient {
     public static void main(String[] args) {
         if (args.length != 3){
             System.err.println("Invalid number of arguments. Please provide exactly three arguments.");
