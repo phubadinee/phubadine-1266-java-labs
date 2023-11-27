@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "NumberGuessingGames_2",
+            "request": "launch",
+            "mainClass": "mehom.phubadine.lab3.NumberGuessingGames_2",
+            "projectName": "phubadine-1266-java-labs_a7172c9c"
+        },
+        {
+            "type": "java",
             "name": "ConfigurableNumberGuessingGame",
             "request": "launch",
             "mainClass": "mehom.phubadine.lab3.ConfigurableNumberGuessingGame",

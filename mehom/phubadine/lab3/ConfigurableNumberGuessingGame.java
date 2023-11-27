@@ -2,6 +2,17 @@ package mehom.phubadine.lab3;
 
 import java.util.Scanner;
 
+/*
+ * NumberGuessingGame
+ * input : Guess Number (int)
+ * output : if input == guess show "Congratulations"
+ *          if input > guess show "Try a lower number!"
+ *          if input < guess show "Try a higher number!"
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
+
 public class ConfigurableNumberGuessingGame {    
     static int secret, min, max, numTries, maxTries;
     static Scanner input = new Scanner(System.in);
