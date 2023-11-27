@@ -15,23 +15,23 @@ import java.util.Scanner;
 
 public class NumberGuessingGame {
 
+    static Scanner input = new Scanner(System.in);
+
     public static void main(String[] args) {
+
         int min = 1, max = 20, guessing, tried = 0;
-        // int secret = min + (int) (Math.random() * ((max - min) + 1));
-        int secret = 5;
-
-        // System.out.println("Secret: " + secret);
-
+        int secret = min + (int) (Math.random() * ((max - min) + 1));
+        
         System.out.println("Welcome to a number guessing game!");
 
+        // Start Game
         while (true) {
 
             // Check tried 
             if (tried != 5) {
                 // input stage
-                Scanner guess = new Scanner(System.in);
                 System.out.print("Enter an integer between " + min + " and " + max + ":");
-                guessing = guess.nextInt();
+                guessing = input.nextInt();
                 tried += 1;
                 
                 // Guess condition stage

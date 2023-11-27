@@ -2,19 +2,26 @@ package mehom.phubadine.lab3;
 
 import java.util.Scanner;
 
-public class NumberGuessingMethodGame {
-    static int secret, tried;
-    final static int MIN = 1;
-    final static int MAX = 20;
+public class ConfigurableNumberGuessingGame {    
+    static int secret, min, max, numTries, maxTries;
     static Scanner input = new Scanner(System.in);
-
+    
     public static void main(String[] args) {
+        configure();
         genAnswer();
         playGame();
     }
         
+    static void configure(){
+        System.out.print("Enter the min value:");
+        min = input.nextInt();
+        System.out.print("Enter the max value:");
+        max = input.nextInt();
+        System.out.print("Enter the maximum number of tries:");
+        maxTries = input.nextInt();
+    }   
     static void genAnswer() {
-        secret = MIN + (int) (Math.random() * ((MAX - MIN) + 1));
+        secret = min + (int) (Math.random() * ((max - min) + 1));
     }
 
     static void playGame(){
@@ -22,18 +29,18 @@ public class NumberGuessingMethodGame {
         while (true) {
 
             // Check tried 
-            if (tried != 5) {
+            if (numTries != maxTries) {
                 // input stage
-                System.out.print("Enter an integer between " + MIN + " and " + MAX + ":");
+                System.out.print("Enter an integer between " + min + " and " + max + ":");
                 int guessing = input.nextInt();
-                tried += 1;
+                numTries += 1;
                 // Guess condition stage
                 if (guessing == secret) {
                     System.out.println("Congratulations!");
-                    if (tried == 1){
-                        System.out.println("You have tried " + tried + " time.");
+                    if (numTries == 1){
+                        System.out.println("You have tried " + numTries + " time.");
                     }else{
-                        System.out.println("You have tried " + tried + " times.");
+                        System.out.println("You have tried " + numTries + " times.");
                     }
                     break;
                 } else if (guessing > secret) {
