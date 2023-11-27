@@ -13,7 +13,7 @@ import java.util.Scanner;
  * Sec : 1 
  */
 
-public class NumberGuessingGames_2 {
+public class NumberGuessingGames {
     static int secret, min, max, numTries, maxTries;
     static Scanner input = new Scanner(System.in);
     static Scanner input_state = new Scanner(System.in);
@@ -27,10 +27,10 @@ public class NumberGuessingGames_2 {
     static void configure() {
         System.out.print("Enter the min value:");
         min = input.nextInt();
+
         System.out.print("Enter the max value:");
         max = input.nextInt();
-
-        while (max < min){
+        while (max < min) {
             System.out.println("The max value must be at least equal to the min value");
             System.out.print("Enter the max value:");
             max = input.nextInt();
@@ -38,8 +38,7 @@ public class NumberGuessingGames_2 {
 
         System.out.print("Enter the maximum number of tries:");
         maxTries = input.nextInt();
-
-        while (maxTries<=0) {
+        while (maxTries <= 0) {
             System.out.println("The maximum number of tries must be greater than 0");
             System.out.print("Enter the maximum number of tries:");
             maxTries = input.nextInt();
@@ -66,12 +65,13 @@ public class NumberGuessingGames_2 {
                     System.out.print("Enter an integer between " + min + " and " + max + ":");
                     int guessing = input.nextInt();
 
-                    while (guessing < min || guessing > max){
+                    while (guessing < min || guessing > max) {
                         System.out.println("The number must be between " + min + " and " + max);
                         System.out.print("Enter an integer between " + min + " and " + max + ":");
                         guessing = input.nextInt();
                     }
                     numTries += 1;
+
                     // Guess condition stage
                     if (guessing == secret) {
                         System.out.println("Congratulations!");
@@ -96,5 +96,6 @@ public class NumberGuessingGames_2 {
             System.out.print("Want to play again (Y or y):");
             flag = input_state.nextLine();
         }
+        System.out.println("Thank you for playing our games. Bye!");
     }
 }
