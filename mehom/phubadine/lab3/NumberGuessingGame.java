@@ -14,11 +14,12 @@ import java.util.Scanner;
  */
 
 public class NumberGuessingGame {
-    
+
     public static void main(String[] args) {
         int min = 1, max = 20, guessing, tried = 0;
-        // int secret = min + (int) (Math.random() * ((max - min) + 1));
-        int secret = 5;
+        int secret = min + (int) (Math.random() * ((max - min) + 1));
+
+        System.out.println("Secret: " + secret);
 
         System.out.println("Welcome to a number guessing game!");
 
@@ -36,9 +37,9 @@ public class NumberGuessingGame {
                 if (guessing == secret) {
                     System.out.println("Congratulations!");
                     if (tried == 1){
-                        System.out.println("You have tried " + tried + " time");
+                        System.out.println("You have tried " + tried + " time.");
                     }else{
-                        System.out.println("You have tried " + tried + " times");
+                        System.out.println("You have tried " + tried + " times.");
                     }
                     break;
                 } else if (guessing > secret) {
@@ -48,7 +49,7 @@ public class NumberGuessingGame {
                 }
             
             } else {
-                System.out.println("You have tried 5 times. You ran out of guesses");
+                System.out.println("You have tried 5 times. You ran out of guesses.");
                 System.out.println("The answer is " + secret);
                 break;
             }
