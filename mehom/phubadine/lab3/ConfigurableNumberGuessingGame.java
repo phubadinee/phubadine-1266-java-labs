@@ -8,6 +8,7 @@ import java.util.Scanner;
  * output : if input == guess show "Congratulations"
  *          if input > guess show "Try a lower number!"
  *          if input < guess show "Try a higher number!"
+ * call 3 method for config genrate answer and play game.
  * Auther : Phubadine Mehom 
  * ID : 663040126-6
  * Sec : 1 

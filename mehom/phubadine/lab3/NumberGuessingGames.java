@@ -8,6 +8,9 @@ import java.util.Scanner;
  * output : if input == guess show "Congratulations"
  *          if input > guess show "Try a lower number!"
  *          if input < guess show "Try a higher number!"
+ * 
+ * This program to check guessing and only guess between min max
+ * can't input max < min , and maxtries = 0 and < 0
  * Auther : Phubadine Mehom 
  * ID : 663040126-6
  * Sec : 1 
@@ -17,7 +20,6 @@ public class NumberGuessingGames {
     static int secret, min, max, numTries, maxTries;
     static Scanner input = new Scanner(System.in);
     static Scanner input_state = new Scanner(System.in);
-
     public static void main(String[] args) {
         configure();
         genAnswer();
