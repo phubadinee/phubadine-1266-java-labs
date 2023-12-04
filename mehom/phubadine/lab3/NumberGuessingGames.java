@@ -94,7 +94,11 @@ public class NumberGuessingGames {
                     }
 
                 } else {
-                    System.out.println("You have tried 5 times. You ran out of guesses.");
+                    if (maxTries == 1){
+                        System.out.println("You have tried " + maxTries + " time. You ran out of guesses.");
+                    }else{
+                        System.out.println("You have tried " + maxTries +" times. You ran out of guesses.");
+                    }
                     System.out.println("The answer is " + secret + ".");
                     state = 0;
                 }
