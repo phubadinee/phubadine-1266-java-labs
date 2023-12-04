@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MatrixDisplay",
+            "request": "launch",
+            "mainClass": "mehom.phubadine.lab4.MatrixDisplay",
+            "projectName": "phubadine-1266-java-labs_a7172c9c"
+        },
+        {
+            "type": "java",
             "name": "NumberGuessingGames",
             "request": "launch",
             "mainClass": "mehom.phubadine.lab3.NumberGuessingGames",
