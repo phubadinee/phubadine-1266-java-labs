@@ -18,6 +18,7 @@ import java.util.Scanner;
 
 public class NumberGuessingGames {
     static int secret, min, max, numTries, maxTries;
+    static int state = 1;
     static Scanner input = new Scanner(System.in);
     static Scanner input_state = new Scanner(System.in);
     public static void main(String[] args) {
@@ -55,8 +56,11 @@ public class NumberGuessingGames {
         String flag = "y";
 
         while (flag.equals("y") || flag.equals("Y")) {
+            if (state == 0){
+                genAnswer();
+            }
             numTries = 0;
-            int state = 1;
+            state = 1;
             System.out.println("Welcome to a number guessing game!");
 
             while (state == 1) {
