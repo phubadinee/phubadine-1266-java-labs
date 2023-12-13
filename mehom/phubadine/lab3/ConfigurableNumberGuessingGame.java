@@ -3,12 +3,18 @@ package mehom.phubadine.lab3;
 import java.util.Scanner;
 
 /*
- * NumberGuessingGame
+ * ConfigurableNumberGuessingGame
  * input : Guess Number (int)
  * output : if input == guess show "Congratulations"
  *          if input > guess show "Try a lower number!"
  *          if input < guess show "Try a higher number!"
- * call 3 method for config genrate answer and play game.
+ * 
+ * This program to check guessing and only guess between min max
+ * can't input max < min , and maxtries = 0 and < 0
+ * 
+ * Configure : min, max, maxTries
+ * Gen Answer : type(int) between min max
+ * Play Game : enter your guessing to the game
  * Auther : Phubadine Mehom 
  * ID : 663040126-6
  * Sec : 1 
@@ -32,6 +38,7 @@ public class ConfigurableNumberGuessingGame {
         System.out.print("Enter the maximum number of tries:");
         maxTries = input.nextInt();
     }   
+    
     static void genAnswer() {
         secret = min + (int) (Math.random() * ((max - min) + 1));
     }

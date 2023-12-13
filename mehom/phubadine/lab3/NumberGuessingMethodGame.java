@@ -3,15 +3,23 @@ package mehom.phubadine.lab3;
 import java.util.Scanner;
 
 /*
- * NumberGuessingGame
+ * NumberGuessingMethodGame
  * input : Guess Number (int)
  * output : if input == guess show "Congratulations"
  *          if input > guess show "Try a lower number!"
  *          if input < guess show "Try a higher number!"
+ * 
+ * This program to check guessing and only guess between min max
+ * can't input max < min , and maxtries = 0 and < 0
+ * 
+ * Configure : min, max, maxTries
+ * Gen Answer : type(int) between min max
+ * Play Game : enter your guessing to the game
  * Auther : Phubadine Mehom 
  * ID : 663040126-6
  * Sec : 1 
  */
+ 
 
 public class NumberGuessingMethodGame {
     static int secret, tried;

@@ -5,7 +5,23 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
 
+/*
+ * MatrixDisplayOptions Program
+ * Select Mode for Matrix:
+    * 1. User Input (enter row and column -> enter num index)
+    * 2. Random Numbers (enter row and column -> return Random number in Matrix)
+    * 3. All Zeros (enter row and column -> return all zeros matrix)
+    * 4. All Ones ( enter row and column -> return all ones matrix)
+    * 5. Diagonal Matix (enter num for row == column (diagonal matrix) -> return Diagonal Matrix)
+ * Output : matrix
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
+
 public class MatrixDisplayOptions {
+
+    // Variable value for input row, column
     static int n_row, n_column;
     static int res, diagonal_shape;
     
@@ -13,7 +29,8 @@ public class MatrixDisplayOptions {
     static Random rand = new Random();
 
     public static void main(String[] args) {
-        
+
+        // called method for playing
         int menu = displayOption();
         runOption(menu);
         
@@ -21,45 +38,56 @@ public class MatrixDisplayOptions {
 
     static void menu(int mode) {
 
+        // Enter row
         System.out.print("Enter the number of rows: ");
         n_row = input.nextInt();
-        while (n_row <= 0) {
+        while (n_row <= 0) { // row only > 0
+            // Enter new rows
             System.out.println("Both rows and columns must be greater than 0. Please try again.");
             System.out.print("Enter the number of rows: ");
             n_row = input.nextInt();
         }
+        // Enter row
         System.out.print("Enter the number of column: ");
         n_column = input.nextInt();
-        while (n_column <= 0) {
+        while (n_column <= 0) { // column only > 0 
+            // Enter new column
             System.out.println("Both rows and columns must be greater than 0. Please try again.");
             System.out.print("Enter the number of rows: ");
             n_column = input.nextInt();
         }
 
+        // Build List for input matrix (collect row (list))
         List<List<Integer>> row_list = new ArrayList<>();
+        
+        // Access to list
         for (int row = 0; row < n_row; row++) {
+            // Build List for input matrix (collect column (int))
             List<Integer> column_list = new ArrayList<>();
 
+            // Access to inner matrix
             for (int column = 0; column < n_column; column++) {
-                if (mode == 1) {
+                if (mode == 1) {    // Normal input
                     System.out.print("Enter element [" + row + "][" + column + "]: ");
                     res = input.nextInt();
-                } else if (mode == 2) {
+                } else if (mode == 2) { // Random input
                     res = rand.nextInt(9);
-                } else if (mode == 3) {
+                } else if (mode == 3) { // All zeros
                     res = 0;
-                } else if (mode == 4) {
+                } else if (mode == 4) { // All Ones
                     res = 1;
                 }
-
+                // add num to column list
                 column_list.add(res);
             }
+            // add column to row list
             row_list.add(column_list);
         }
         displayMatrix(row_list);
     }
 
     static void displayMatrix(List<List<Integer>> matrix) {
+        // Access to list in list
         for (List<Integer> row : matrix) {
             for (int column : row) {
                 System.out.print(column + " ");

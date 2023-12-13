@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
 
-public class MatrixDisplayOption {
+public class MatrixOperations {
     static int n_row, n_column;
     static int res, diagonal_shape;
 
@@ -26,7 +26,7 @@ public class MatrixDisplayOption {
             System.out.println("Both rows and columns must be greater than 0. Please try again.");
             System.out.print("Enter the number of rows: ");
             n_row = input.nextInt();
-            
+
         }
         System.out.print("Enter the number of column: ");
         n_column = input.nextInt();
@@ -117,7 +117,6 @@ public class MatrixDisplayOption {
     static void runOperation(List<List<Integer>> matrix) {
 
         int option = displayOperation();
-
         while (option != 5) {
             if (option == 1) {
                 displayMatrix(transposeMatrix(matrix));
@@ -126,6 +125,10 @@ public class MatrixDisplayOption {
                 sumRowColumn(matrix);
             } else if (option == 3) {
                 maxminVal(matrix);
+            } else if (option == 4) {
+                diagonalDisplay(matrix);
+            } else if (option == 5) {
+                break;
             }
 
             option = displayOperation();
@@ -152,6 +155,7 @@ public class MatrixDisplayOption {
             row_list.add(column_list);
         }
         displayMatrix(row_list);
+        runOperation(row_list);
     }
 
     static List<List<Integer>> transposeMatrix(List<List<Integer>> matrix) {
@@ -168,10 +172,10 @@ public class MatrixDisplayOption {
     }
 
     static void sumRowColumn(List<List<Integer>> matrix) {
+        int i_row = 0;
         System.out.println("Row Sums:");
         for (List<Integer> row : matrix) {
             int sum = 0;
-            int i_row = 0;
             for (int column : row) {
                 sum += column;
             }
@@ -179,10 +183,9 @@ public class MatrixDisplayOption {
             System.out.println("Row " + i_row + ": " + sum);
         }
         List<List<Integer>> trans_sum = transposeMatrix(matrix);
-    
+        int i_column = 0;
         for (List<Integer> row : trans_sum) {
             int sum = 0;
-            int i_column = 0;
             for (int column : row) {
                 sum += column;
             }
@@ -195,19 +198,30 @@ public class MatrixDisplayOption {
     static void maxminVal(List<List<Integer>> matrix) {
         int minVal = 1_000_000_000;
         int maxVal = 0;
-
         for (int row = 0; row < matrix.size(); row++) {
             for (int column = 0; column < matrix.get(0).size(); column++) {
-                int val = matrix.get(column).get(row);
+                int val = matrix.get(row).get(column);
                 if (val < minVal) {
                     minVal = val;
-                } else if (val > maxVal){
+                } else if (val > maxVal) {
                     maxVal = val;
                 }
             }
         }
-
         System.out.println("Maximum Value: " + maxVal);
         System.out.println("Minimum Value: " + minVal);
+    }
+
+    static void diagonalDisplay(List<List<Integer>> matrix) {
+        System.out.println("Main Diagonal:");
+        for (int row = 0; row < matrix.size(); row++) {
+            for (int column = 0; column < matrix.get(0).size(); column++) {
+                if (row == column) {
+                    int val = matrix.get(row).get(column);
+                    System.out.print(val + " ");
+                }
+            }
+        }
+        System.out.println();
     }
 }
