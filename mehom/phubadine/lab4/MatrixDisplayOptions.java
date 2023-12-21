@@ -48,12 +48,12 @@ public class MatrixDisplayOptions {
             n_row = input.nextInt();
         }
         // Enter row
-        System.out.print("Enter the number of column: ");
+        System.out.print("Enter the number of columns: ");
         n_column = input.nextInt();
         while (n_column <= 0) { // column only > 0 
             // Enter new column
             System.out.println("Both rows and columns must be greater than 0. Please try again.");
-            System.out.print("Enter the number of rows: ");
+            System.out.print("Enter the number of columns: ");
             n_column = input.nextInt();
         }
 
@@ -96,40 +96,43 @@ public class MatrixDisplayOptions {
         }
     }
 
+    // Get input option
     static int displayOption() {
         System.out.println("Select matrix initialization method:");
         System.out.println("1. User Input");
         System.out.println("2. Random Numbers");
         System.out.println("3. All Zeros");
         System.out.println("4. All Ones");
-        System.out.println("5. Diagonal Matix");
+        System.out.println("5. Diagonal Matrix");
 
         System.out.print("Enter choice (1-5): ");
-        int option = input.nextInt();
+        int option = input.nextInt(); // Get option
 
         return option;
     }
 
+    // Run from choose option
     static void runOption(int option) {
         if (option == 1) {
-            menu(1);
+            menu(1); // User Input
         } else if (option == 2) {
-            menu(2);
+            menu(2); // Random Numbers
         } else if (option == 3) {
-            menu(3);
+            menu(3); // All Zeros
         } else if (option == 4) {
-            menu(4);
+            menu(4); // All Ones
         } else if (option == 5) {
-            diagonalMatrix();
+            diagonalMatrix(); // Diagonal
         }
 
         int menu = displayOption();
-        runOption(menu);
+        runOption(menu);    // Recursion
     }
 
+    // Build Diagonal Matrix
     static void diagonalMatrix() {
         System.out.print("Enter the number of rows and column for diagonal matrix: ");
-        diagonal_shape = input.nextInt();
+        diagonal_shape = input.nextInt(); // Get shape
 
         List<List<Integer>> row_list = new ArrayList<>();
         for (int row = 0; row < diagonal_shape; row++) {
@@ -137,9 +140,9 @@ public class MatrixDisplayOptions {
 
             for (int column = 0; column < diagonal_shape; column++) {
                 if (row == column) {
-                    res = 1;
+                    res = 1; // Diagonal
                 } else {
-                    res = 0;
+                    res = 0; // Not Diagonal
                 }
                 column_list.add(res);
             }
