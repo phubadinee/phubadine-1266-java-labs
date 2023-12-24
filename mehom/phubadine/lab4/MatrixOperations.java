@@ -30,14 +30,14 @@ import java.util.Random;
 public class MatrixOperations {
 
     // Variable 
-    static int n_row, n_column;
-    static int res, diagonal_shape;
+    static int nRow, nColumn;
+    static int res, diagonalShape;
     static Scanner input = new Scanner(System.in);
     static Random rand = new Random();
-
+    static int stat;
     public static void main(String[] args) {
-
         // Main Program
+        stat = 0;
         int menu = displayOption();
         runOption(menu);
 
@@ -45,32 +45,33 @@ public class MatrixOperations {
 
     // Function Menu for  get input rows and column
     static void menu(int mode) {
+        
         System.out.print("Enter the number of rows: ");
-        n_row = input.nextInt();
-        while (n_row <= 0) { // row only > 0
+        nRow = input.nextInt();
+        while (nRow <= 0) { // row only > 0
             System.out.println("Both rows and columns must be greater than 0. Please try again.");
             System.out.print("Enter the number of rows: ");
-            n_row = input.nextInt();
+            nRow = input.nextInt();
 
         }
         System.out.print("Enter the number of columns: ");
-        n_column = input.nextInt();
-        while (n_column <= 0) { // column only > 0 
+        nColumn = input.nextInt();
+        while (nColumn <= 0) { // column only > 0 
             System.out.println("Both rows and columns must be greater than 0. Please try again.");
             System.out.print("Enter the number of columns: ");
-            n_column = input.nextInt();
+            nColumn = input.nextInt();
         }
 
         // Build List for input matrix (collect row (list))
-        List<List<Integer>> row_list = new ArrayList<>();
+        List<List<Integer>> rowList = new ArrayList<>();
 
         // Access to list
-        for (int row = 0; row < n_row; row++) {
+        for (int row = 0; row < nRow; row++) {
             // Build List for input matrix (collect column (int))
-            List<Integer> column_list = new ArrayList<>();
+            List<Integer> columnList = new ArrayList<>();
 
             // Access to inner matrix
-            for (int column = 0; column < n_column; column++) {
+            for (int column = 0; column < nColumn; column++) {
                 if (mode == 1) { // Normal input
                     System.out.print("Enter element [" + row + "][" + column + "]: ");
                     res = input.nextInt();
@@ -82,14 +83,17 @@ public class MatrixOperations {
                     res = 1;
                 }
                 // add num to column list
-                column_list.add(res);
+                columnList.add(res);
             }
             // add column to row list
-            row_list.add(column_list);
+            rowList.add(columnList);
         }
-        displayMatrix(row_list);
-        runOperation(row_list);
-
+            
+        if (stat != 5) {
+            displayMatrix(rowList);
+            stat = displayOperation();
+            runOperation(rowList, stat);
+        }
     }
 
     static void displayMatrix(List<List<Integer>> matrix) {
@@ -112,9 +116,9 @@ public class MatrixOperations {
         System.out.println("5. Diagonal Matrix");
 
         System.out.print("Enter choice (1-5): ");
-        int option = input.nextInt(); // Get option
-
-        return option;
+        int options = input.nextInt(); // Get option
+        stat = 0;
+        return options;
     }
 
     // Choose Operation
@@ -133,110 +137,128 @@ public class MatrixOperations {
     }
 
     // Run from choose option
-    static void runOption(int option) {
-        if (option == 1) {
+    static void runOption(int optionMenu) {
+        if (optionMenu == 1) {
             menu(1); // User Input
-        } else if (option == 2) {
+        } else if (optionMenu == 2) {
             menu(2); // Random Numbers
-        } else if (option == 3) {
+        } else if (optionMenu == 3) {
             menu(3); // All Zeros
-        } else if (option == 4) {
+        } else if (optionMenu == 4) {
             menu(4); // All Ones
-        } else if (option == 5) {
+        } else if (optionMenu == 5) {
             diagonalMatrix(); // Diagonal
         }
+
         int menu = displayOption();
         runOption(menu);    // Recursion
     }
 
-    static void runOperation(List<List<Integer>> matrix) {
-
-        int option = displayOperation(); // Get Option from method
-        while (option != 5) {
-            if (option == 1) {
-                displayMatrix(transposeMatrix(matrix)); // Transpose and display
-            } else if (option == 2) {
-                sumRowColumn(matrix);
-            } else if (option == 3) {
-                maxminVal(matrix);
-            } else if (option == 4) {
-                diagonalDisplay(matrix);
-            } else if (option == 5) {
-                break; // Exit from Operation
-            }
-
-            option = displayOperation();
+    static void runOperation(List<List<Integer>> matrix, int option) {
+        if (option !=5) {
+            while (option != 5) {
+                if (option == 1) {
+                    matrix = transposeMatrix(matrix);
+                    displayMatrix(matrix); // Transpose and display
+                } else if (option == 2) {
+                    sumRowColumn(matrix);  
+                } else if (option == 3) {
+                    maxMinVal(matrix);    
+                } else if (option == 4) {
+                    diagonalDisplay(matrix);;       
+                } else if (option == 5) {
+                    break; // Exit from Operation
+                }
+                option = displayOperation();
+            
+             }
+            runOperation(matrix, option);
         }
-
+        
+                
     }
 
     // Build Diagonal Matrix
     static void diagonalMatrix() {
         System.out.print("Enter the number of rows and column for diagonal matrix: ");
-        diagonal_shape = input.nextInt(); // Get shape
+        diagonalShape = input.nextInt(); // Get shape
 
         // Access to list in list
-        List<List<Integer>> row_list = new ArrayList<>();
-        for (int row = 0; row < diagonal_shape; row++) {
-            List<Integer> column_list = new ArrayList<>();
+        List<List<Integer>> rowList = new ArrayList<>();
+        for (int row = 0; row < diagonalShape; row++) {
+            List<Integer> columnList = new ArrayList<>();
 
-            for (int column = 0; column < diagonal_shape; column++) {
+            for (int column = 0; column < diagonalShape; column++) {
                 if (row == column) {
                     res = 1; // Diagonal
                 } else {
                     res = 0; // Not Diagonal
                 }
-                column_list.add(res);
+                columnList.add(res);
             }
-            row_list.add(column_list);
+            rowList.add(columnList);
         }
-        displayMatrix(row_list);
-        runOperation(row_list);
+        displayMatrix(rowList);
+        int option = displayOperation();
+        runOperation(rowList, option);
     }
 
     // Transpose Method
+    // static List<List<Integer>> transposeMatrix(List<List<Integer>> matrix) {
+    //     List<List<Integer>> trans = new ArrayList<>();
+    //     for (int row = 0; row < nColumn; row++) {
+    //         List<Integer> newRow = new ArrayList<>();
+    //         for (int column = 0; column < nRow; column++) {
+    //             newRow.add(matrix.get(column).get(row));
+    //         }
+    //         trans.add(newRow);
+    //     }
+    //     // displayMatrix(trans);
+    //     return trans;
+    // }
+
     static List<List<Integer>> transposeMatrix(List<List<Integer>> matrix) {
         List<List<Integer>> trans = new ArrayList<>();
-        for (int row = 0; row < n_column; row++) {
+        for (int row = 0; row < matrix.get(0).size(); row++) {
             List<Integer> newRow = new ArrayList<>();
-            for (int column = 0; column < n_row; column++) {
+            for (int column = 0; column < matrix.size(); column++) {
                 newRow.add(matrix.get(column).get(row));
             }
             trans.add(newRow);
         }
-        // displayMatrix(trans);
+        
         return trans;
     }
 
     // Sum Row and Column
     static void sumRowColumn(List<List<Integer>> matrix) {
         // Sum Row
-        int i_row = 0;
+        int iRow = 0;
         System.out.println("Row Sums:");
         for (List<Integer> row : matrix) {
             int sum = 0;
             for (int column : row) {
                 sum += column; // Sum in list using for loop
             }
-            i_row += 1; // order list next
-            System.out.println("Row " + i_row + ": " + sum);
+            iRow += 1; // order list next
+            System.out.println("Row " + iRow + ": " + sum);
         }
         // Sum Column
         List<List<Integer>> trans_sum = transposeMatrix(matrix);
-        int i_column = 0;
+        int iColumn = 0;
         for (List<Integer> row : trans_sum) {
             int sum = 0;
             for (int column : row) {
                 sum += column; // Sum in list using for loop
             }
-            i_column += 1; // order list next
-            System.out.println("column " + i_column + ": " + sum);
+            iColumn += 1; // order list next
+            System.out.println("column " + iColumn + ": " + sum);
         }
 
     }
 
     // Max Min Value in Matrix
-    static void maxminVal(List<List<Integer>> matrix) {
+    static void maxMinVal(List<List<Integer>> matrix) {
         int minVal = 1_000_000_000; // Set Min
         int maxVal = 0; // Set Max
         for (int row = 0; row < matrix.size(); row++) {

@@ -22,8 +22,8 @@ import java.util.Random;
 public class MatrixDisplayOptions {
 
     // Variable value for input row, column
-    static int n_row, n_column;
-    static int res, diagonal_shape;
+    static int nRow, nColumn;
+    static int res, diagonalShape;
     
     static Scanner input = new Scanner(System.in);
     static Random rand = new Random();
@@ -40,33 +40,33 @@ public class MatrixDisplayOptions {
 
         // Enter row
         System.out.print("Enter the number of rows: ");
-        n_row = input.nextInt();
-        while (n_row <= 0) { // row only > 0
+        nRow = input.nextInt();
+        while (nRow <= 0) { // row only > 0
             // Enter new rows
             System.out.println("Both rows and columns must be greater than 0. Please try again.");
             System.out.print("Enter the number of rows: ");
-            n_row = input.nextInt();
+            nRow = input.nextInt();
         }
         // Enter row
         System.out.print("Enter the number of columns: ");
-        n_column = input.nextInt();
-        while (n_column <= 0) { // column only > 0 
+        nColumn = input.nextInt();
+        while (nColumn <= 0) { // column only > 0 
             // Enter new column
             System.out.println("Both rows and columns must be greater than 0. Please try again.");
             System.out.print("Enter the number of columns: ");
-            n_column = input.nextInt();
+            nColumn = input.nextInt();
         }
 
         // Build List for input matrix (collect row (list))
-        List<List<Integer>> row_list = new ArrayList<>();
+        List<List<Integer>> rowList = new ArrayList<>();
         
         // Access to list
-        for (int row = 0; row < n_row; row++) {
+        for (int row = 0; row < nRow; row++) {
             // Build List for input matrix (collect column (int))
-            List<Integer> column_list = new ArrayList<>();
+            List<Integer> columnList = new ArrayList<>();
 
             // Access to inner matrix
-            for (int column = 0; column < n_column; column++) {
+            for (int column = 0; column < nColumn; column++) {
                 if (mode == 1) {    // Normal input
                     System.out.print("Enter element [" + row + "][" + column + "]: ");
                     res = input.nextInt();
@@ -78,12 +78,12 @@ public class MatrixDisplayOptions {
                     res = 1;
                 }
                 // add num to column list
-                column_list.add(res);
+                columnList.add(res);
             }
             // add column to row list
-            row_list.add(column_list);
+            rowList.add(columnList);
         }
-        displayMatrix(row_list);
+        displayMatrix(rowList);
     }
 
     static void displayMatrix(List<List<Integer>> matrix) {
@@ -132,22 +132,22 @@ public class MatrixDisplayOptions {
     // Build Diagonal Matrix
     static void diagonalMatrix() {
         System.out.print("Enter the number of rows and column for diagonal matrix: ");
-        diagonal_shape = input.nextInt(); // Get shape
+        diagonalShape = input.nextInt(); // Get shape
 
-        List<List<Integer>> row_list = new ArrayList<>();
-        for (int row = 0; row < diagonal_shape; row++) {
-            List<Integer> column_list = new ArrayList<>();
+        List<List<Integer>> rowList = new ArrayList<>();
+        for (int row = 0; row < diagonalShape; row++) {
+            List<Integer> columnList = new ArrayList<>();
 
-            for (int column = 0; column < diagonal_shape; column++) {
+            for (int column = 0; column < diagonalShape; column++) {
                 if (row == column) {
                     res = 1; // Diagonal
                 } else {
                     res = 0; // Not Diagonal
                 }
-                column_list.add(res);
+                columnList.add(res);
             }
-            row_list.add(column_list);
+            rowList.add(columnList);
         }
-        displayMatrix(row_list);
+        displayMatrix(rowList);
     }
 }   

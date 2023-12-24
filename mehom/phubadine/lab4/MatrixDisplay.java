@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 
 public class MatrixDisplay {
-    static int n_row, n_column;
+    static int nRow, nColumn;
     static Scanner input = new Scanner(System.in);
       
     public static void main(String[] args) {
@@ -25,42 +25,42 @@ public class MatrixDisplay {
     static void inputMatrix() {
         // Input rows
         System.out.print("Enter the number of rows: ");
-        n_row = input.nextInt();
-        while (n_row <= 0) { // rows only > 0
+        nRow = input.nextInt();
+        while (nRow <= 0) { // rows only > 0
             // Input new rows
             System.out.println("Both rows and columns must be greater than 0. Please try again.");
             System.out.print("Enter the number of rows: ");
-            n_row = input.nextInt();
+            nRow = input.nextInt();
         }
         // Input columns
         System.out.print("Enter the number of column: ");
-        n_column = input.nextInt();
-        while (n_column <= 0) { // columns only > 0
+        nColumn = input.nextInt();
+        while (nColumn <= 0) { // columns only > 0
             // Input new columns
             System.out.println("Both rows and columns must be greater than 0. Please try again.");
             System.out.print("Enter the number of rows: ");
-            n_column = input.nextInt();
+            nColumn = input.nextInt();
         }
 
         // Build List for input matrix (collect row (list))
-        List<List<Integer>> row_list = new ArrayList<>();
+        List<List<Integer>> rowList = new ArrayList<>();
 
         // Access to list
-        for (int row = 0; row < n_row; row++ ) {
+        for (int row = 0; row < nRow; row++ ) {
             // Build List for input matrix (collect column (int))
-            List<Integer> column_list = new ArrayList<>();
+            List<Integer> columnList = new ArrayList<>();
             
-            for (int column = 0; column < n_column; column++) {
+            for (int column = 0; column < nColumn; column++) {
                 System.out.print("Enter element [" + row + "][" + column + "]: ");
                 // Input num 
                 int res = input.nextInt();
                 // add num to column list
-                column_list.add(res);
+                columnList.add(res);
             }
             // add column to row list
-            row_list.add(column_list);
+            rowList.add(columnList);
         }  
-        displayMatrix(row_list);
+        displayMatrix(rowList);
     }
 
     static void displayMatrix(List<List<Integer>> matrix) {

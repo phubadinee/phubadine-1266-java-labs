@@ -26,7 +26,7 @@ public class NumberGuessingGamesV3 {
     static int secret, min, max, numTries, maxTries;
     static int state = 1;
     static Scanner input = new Scanner(System.in);
-    static Scanner input_state = new Scanner(System.in);
+    static Scanner inputState = new Scanner(System.in);
     static String select;
     static int index;
     // Flag
@@ -139,7 +139,7 @@ public class NumberGuessingGamesV3 {
             
             // Select mode for display [a : list all] and [g : specific guess]
             System.out.print("Enter 'a' to list all guesses, 'g' for a specific guess, or any other key to quit: ");
-            select = input_state.nextLine();
+            select = inputState.nextLine();
             // Mode zone
             while (select.equals("a") || select.equals("g")) {
                 if (select.equals("a")) {   // display all guesses
@@ -155,13 +155,13 @@ public class NumberGuessingGamesV3 {
                 }
                 // new input for mode and enter any key to exit
                 System.out.print("Enter 'a' to list all guesses, 'g' for a specific guess, or any other key to quit: ");
-                select = input_state.nextLine();
+                select = inputState.nextLine();
             }
             // Display Gamelog
             Gamelog();
             // enter flag to play again or exit
             System.out.print("Want yo play again (Y or y):");
-            flag = input_state.nextLine();
+            flag = inputState.nextLine();
         }
         // calling Display GameStatistics
         GameStatistics(option);
