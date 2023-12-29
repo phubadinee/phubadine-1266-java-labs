@@ -17,16 +17,17 @@ public class TestGuessNumberGame {
     //     System.out.println("There are " + GuessNumberGameVer1.getNumOfGames() + " games");
     // }
 
-    // public static void testPlayGamesStats() {
-    //     GuessNumberGameVer3 gng = new GuessNumberGameVer3(1, 5, 3);
-    //     System.out.println(gng);
-    //     gng.playGames();
-    // }
+    public static void testPlayGamesStats() {
+        GuessNumberGameVer3 gng = new GuessNumberGameVer3(1, 5, 3);
+        System.out.println(gng);
+        gng.playGames();
+    }
 
     public static void main(String[] args) {
         // testPart1();
         // testConstructors();
-        testPlayGames();
+        // testPlayGames();
+        testPlayGamesStats();
     }
 
     // public static void testConstructors() {
@@ -60,9 +61,9 @@ public class TestGuessNumberGame {
     //             ", and max tries is " + gng.getMaxTries());
     // }
 
-    public static void testPlayGames() {
-        GuessNumberGameVer2 gng = new GuessNumberGameVer2(5, 10, 4);
-        gng.playGames();
-    }
+    // public static void testPlayGames() {
+    //     GuessNumberGameVer2 gng = new GuessNumberGameVer2(5, 10, 4);
+    //     gng.playGames();
+    // }
 
 }

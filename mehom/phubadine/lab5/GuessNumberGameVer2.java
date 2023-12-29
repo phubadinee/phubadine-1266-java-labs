@@ -62,12 +62,11 @@ public class GuessNumberGameVer2 extends GuessNumberGameVer1 {
                 }
 
             } else {
-                System.out.print("You ran out of guesses.");
-                System.out.println("The answer was " + correctNum + ".");
+                System.out.println("You have tried " + tried + " times. You ran out of guesses.");
+                System.out.println("The answer is " + correctNum + ".");
                 state = 0;
             }
         }
-        System.out.println("Thank you for playing our games. Bye!");
     }
 
     public void showSpecific() {
