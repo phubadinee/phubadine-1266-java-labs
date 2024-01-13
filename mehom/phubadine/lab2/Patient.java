@@ -23,7 +23,5 @@ public class Patient {
             System.out.println("Age : " + args[1]);
             System.out.println("Gender : " + args[2]);
         }
-        
-
     }
 }
