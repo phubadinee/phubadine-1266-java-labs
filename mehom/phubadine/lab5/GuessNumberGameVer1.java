@@ -2,20 +2,32 @@ package mehom.phubadine.lab5;
 
 import java.util.Scanner;
 
+/*
+ * GuessNumberGameVer1
+ * Program for Guessing Number
+ * Class has get and set variable and playGame method
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
+
 public class GuessNumberGameVer1 {
+
+    // Variable type of value
     protected int minNum, maxNum, maxTries;
     protected int correctNum;
     protected static int numOfGames = 0;
     Scanner input = new Scanner(System.in);
     protected int tried, guessing;
 
+    // Constructor
     public GuessNumberGameVer1() {
         this.minNum = 1;
         this.maxNum = 10;
         this.maxTries = 3;
-        this.numOfGames += 1;
+        this.numOfGames += 1;   // Increment total number of games   
     }
-
+    
     public GuessNumberGameVer1(int minNum, int maxNum) {
         this.minNum = minNum;
         this.maxNum = maxNum;
@@ -67,8 +79,10 @@ public class GuessNumberGameVer1 {
         }
     }
 
+
+    // Getters and Setters
     public int getMinNum() {
-        return this.minNum;
+        return this.minNum; 
     }
 
     public void setMinNum(int minNum) {

@@ -4,7 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/*
+ * GuessNumberGameVer2
+ * Program for Guessing Number
+ * 
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
+
 public class GuessNumberGameVer2 extends GuessNumberGameVer1 {
+
+    // Variable type of value
     final int MAX_GUESSES = 20;
     protected int[] guesses;
     protected int numGuesses = 0;
@@ -12,6 +23,7 @@ public class GuessNumberGameVer2 extends GuessNumberGameVer1 {
     static Scanner inputState = new Scanner(System.in);
     protected String mode;
 
+    // Constructor
     public GuessNumberGameVer2() {
         super();
         guesses = new int[MAX_GUESSES];
@@ -69,12 +81,14 @@ public class GuessNumberGameVer2 extends GuessNumberGameVer1 {
         }
     }
 
+    // Get guess number in array
     public void showSpecific() {
         System.out.println("Enter which guess in the range (1-" + tried + ")");
         int index = input.nextInt();    // see index guesses
         System.out.println("Guess number " + index + " is " + guesses[index-1]);
     }
 
+    // Show all guesses
     public void showGuesses() {
         for (int i = 0; i < tried; i++) {
             System.out.print(guesses[i] + " ");
@@ -82,8 +96,10 @@ public class GuessNumberGameVer2 extends GuessNumberGameVer1 {
         System.out.println();
     }
 
+    // Start Game Method
     public void playGames() {
         
+        // set mode for start while loop
         mode = "y";
         while (mode.equals("y") || mode.equals("Y")) {
 
@@ -108,6 +124,7 @@ public class GuessNumberGameVer2 extends GuessNumberGameVer1 {
                 System.out.println("If want to play again? type 'y' to continue or 'q' to quit:");
                 System.out.println("Type 'a' to see all guesses or 'g' to see a guess on a specific play.");
                 
+                // get state
                 mode = inputState.nextLine();
             }
         }

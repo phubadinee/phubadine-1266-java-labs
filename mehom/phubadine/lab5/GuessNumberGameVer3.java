@@ -1,10 +1,21 @@
 package mehom.phubadine.lab5;
 
+/*
+ * GuessNumberGameVer3
+ * Program for Guessing Number
+ * 
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
+
 public class GuessNumberGameVer3 extends GuessNumberGameVer2 {
 
+    // Variable type of value
     protected double avgGuesses;
     protected int sumGuesses, minGuesses, maxGuesses;
 
+    // Constructor
     public GuessNumberGameVer3() {
         super();
     }
@@ -15,8 +26,11 @@ public class GuessNumberGameVer3 extends GuessNumberGameVer2 {
         super(minNum, maxNum, maxTries);
     }
 
+    // Start Game Method
     @Override
     public void playGames() {
+
+        // set mode for start while loop
         mode = "y";
         while (mode.equals("y") || mode.equals("Y")) {
 
@@ -32,17 +46,17 @@ public class GuessNumberGameVer3 extends GuessNumberGameVer2 {
             while (!mode.equals("q") && !mode.equals("Y") && !mode.equals("y")) {
                 // Mode zone
                 if (mode.equals("g") || mode.equals("G")) {
-                    showSpecific();
+                    showSpecific(); // get guess from index
                 } else if (mode.equals("a") || mode.equals("A")) {
-                    showGuesses();
+                    showGuesses(); // show all guess
                 } else if (mode.equals("v") || mode.equals("V")) {
-                    System.out.println("Average = " + guessAverage());
+                    System.out.println("Average = " + guessAverage());  // show avg guess
                 } else if (mode.equals("m") || mode.equals("M")) {
-                    System.out.println("Min = " + guessMin());
+                    System.out.println("Min = " + guessMin());  // show min guess
                 } else if (mode.equals("x") || mode.equals("X")) {
-                    System.out.println("Max = " + guessMax());
+                    System.out.println("Max = " + guessMax());  // show max guess
                 } else if (mode.equals("q")) {
-                    break;
+                    break;  // exit
                 } else {
                     System.out.println("Invalid command");
                 }
@@ -50,7 +64,8 @@ public class GuessNumberGameVer3 extends GuessNumberGameVer2 {
                 System.out.println("If want to play again? type 'y' to continue or 'q' to quit:");
                 System.out.println("Type 'a' to see all guesses or 'g' to see a guess on a specific play.");
                 System.out.println("Type 'v' to display of all the guesses, 'm' to show the minimun of the guesses, or 'x' show the maximum of the guesses");
-                
+               
+                // get state
                 mode = inputState.nextLine();
             }
         }
