@@ -24,10 +24,10 @@ public class TestGuessNumberGame {
     }
 
     public static void main(String[] args) {
-        testPart1();
+        // testPart1();
         // testConstructors();
         // testPlayGames();
-        // testPlayGamesStats();
+        testPlayGamesStats();
     }
 
     public static void testConstructors() {

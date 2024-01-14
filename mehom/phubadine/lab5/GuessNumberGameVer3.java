@@ -39,7 +39,7 @@ public class GuessNumberGameVer3 extends GuessNumberGameVer2 {
             // Select mode for display [a : list all] and [g : specific guess]
             System.out.println("If want to play again? type 'y' to continue or 'q' to quit:");
             System.out.println("Type 'a' to see all guesses or 'g' to see a guess on a specific play.");
-            System.out.println("Type 'v' to display of all the guesses, 'm' to show the minimun of the guesses, or 'x' show the maximum of the guesses");
+            System.out.println("Type 'v' to show the average of the guesses, 'm' to show the minimun of the guesses, or 'x' show the maximum of the guesses");
 
             mode = inputState.nextLine();    // input mode
 
@@ -63,7 +63,7 @@ public class GuessNumberGameVer3 extends GuessNumberGameVer2 {
 
                 System.out.println("If want to play again? type 'y' to continue or 'q' to quit:");
                 System.out.println("Type 'a' to see all guesses or 'g' to see a guess on a specific play.");
-                System.out.println("Type 'v' to display of all the guesses, 'm' to show the minimun of the guesses, or 'x' show the maximum of the guesses");
+                System.out.println("Type 'v' to show the average of the guesses, 'm' to show the minimun of the guesses, or 'x' show the maximum of the guesses");
                
                 // get state
                 mode = inputState.nextLine();
