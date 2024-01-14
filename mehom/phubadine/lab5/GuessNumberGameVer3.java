@@ -70,30 +70,35 @@ public class GuessNumberGameVer3 extends GuessNumberGameVer2 {
             }
         }
     }
+
+    // Calculate Guess Average
     public double guessAverage() {
+        // Base sum
         sumGuesses = 0;
         for (int i = 0; i < tried; i++) {
             sumGuesses += guesses[i];
         }
-        avgGuesses = (double) sumGuesses / (double) tried;
+        avgGuesses = (double) sumGuesses / (double) tried;  // cal avg
         return avgGuesses;
     }
 
+    // Find Guess Min
     public int guessMin() {
         minGuesses = maxNum;
         for (int i = 0; i < tried; i++) {
             if (guesses[i] < minGuesses) {
-                minGuesses = guesses[i];
+                minGuesses = guesses[i];    // Set new min
             }
         }
         return minGuesses;
     }
     
+    // Find Guess Max
     public int guessMax() {
-        maxGuesses = minNum;
+        maxGuesses = minNum;    // set start max = min
         for (int i = 0; i < tried; i++) {
             if (guesses[i] > maxGuesses) {
-                maxGuesses = guesses[i];
+                maxGuesses = guesses[i];    // Set new max
             }
         }
         return maxGuesses;
