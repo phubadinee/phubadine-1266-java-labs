@@ -25,7 +25,8 @@ public class GuessNumberGameVer2 extends GuessNumberGameVer1 implements HasRule{
         "', maxTries='" + this.getMaxTries() +
         "'}";
     }
-
+    
+    @Override
     public void gameRule() {
         System.out.println("Guess Number Game Rules: ...");
     }
