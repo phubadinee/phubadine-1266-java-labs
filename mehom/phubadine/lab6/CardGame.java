@@ -22,7 +22,7 @@ public abstract class CardGame extends Game {
 
     @Override
     public String toString() {
-
+        return "";
     }
 
     public abstract void playGame();
