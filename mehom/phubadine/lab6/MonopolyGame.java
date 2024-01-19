@@ -5,13 +5,14 @@ public class MonopolyGame extends Game{
     String res = "";
     
     public MonopolyGame() {
-        this.gameName = "Monopoly Game";
-        this.numOfPlayers = 4;
+        super.setGameName("Monopoly Game");
+        super.setNumOfPlayers(4);
         this.gamePieces = new String[] {"car", "top hat", "thimble", "boot"};
     }
+
     public MonopolyGame(String[] gamePieces) {
-        this.gameName = "Monopoly Game";
-        this.numOfPlayers = 4;
+        super.setGameName("Monopoly Game");
+        super.setNumOfPlayers(4);
         this.gamePieces = gamePieces;
     }
 

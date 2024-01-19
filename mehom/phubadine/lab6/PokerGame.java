@@ -2,15 +2,15 @@ package mehom.phubadine.lab6;
 
 public class PokerGame extends CardGame implements HasRule {
     public PokerGame() {
-        this.gameName = "Poker Game";
-        this.numOfPlayers = 3;
-        this.numOfCardsPerPlayer = 5;
+        super.setGameName("Poker Game");
+        super.setNumOfPlayers(3);
+        super.setNumOfCardsPerPlayer(5);
     }
 
     public PokerGame(int numOfCardsPerPlayer) {
-        this.gameName = "Poker Game";
-        this.numOfPlayers = 3;
-        this.numOfCardsPerPlayer = numOfCardsPerPlayer;
+        super.setGameName("Poker Game");
+        super.setNumOfPlayers(3);
+        super.setNumOfCardsPerPlayer(numOfCardsPerPlayer);
     }
 
     @Override 

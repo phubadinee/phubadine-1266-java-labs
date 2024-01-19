@@ -21,6 +21,4 @@ public class TestGame3 {
         DungeonsAndDragonsGame game5 = new DungeonsAndDragonsGame(3);
         System.out.println(game5);
     }
-
-
 }

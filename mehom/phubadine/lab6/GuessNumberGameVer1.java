@@ -5,25 +5,26 @@ public class GuessNumberGameVer1 extends Game {
     protected int correctNum;
 
     public GuessNumberGameVer1() {
-        this.gameName = "Guess Number Game";
-        this.numOfPlayers = 1;
+        super.setGameName("Guess Number Game");
+        super.setNumOfPlayers(1);
         this.minNum = 1;
         this.maxNum = 10;
         this.maxTries = 3;
         this.correctNum = minNum + (int)(Math.random() * ((maxNum - minNum) + 1));
-
     }
+
     public GuessNumberGameVer1(int minNum, int maxNum) {
-        this.gameName = "Guess Number Game";
-        this.numOfPlayers = 1;
+        super.setGameName("Guess Number Game");
+        super.setNumOfPlayers(1);
         this.minNum = minNum;
         this.maxNum = maxNum;
         this.maxTries = 3;
         this.correctNum = minNum + (int)(Math.random() * ((maxNum - minNum) + 1));
     }
+    
     public GuessNumberGameVer1(int minNum, int maxNum, int maxTries) {
-        this.gameName = "Guess Number Game";
-        this.numOfPlayers = 1;
+        super.setGameName("Guess Number Game");
+        super.setNumOfPlayers(1);
         this.minNum = minNum;
         this.maxNum = maxNum;
         this.maxTries = maxTries;

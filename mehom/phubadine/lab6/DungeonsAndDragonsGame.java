@@ -2,15 +2,14 @@ package mehom.phubadine.lab6;
 
 public class DungeonsAndDragonsGame extends CardGame implements HasRule, UseBoard, UseDice{
     public DungeonsAndDragonsGame() {
-        this.numOfCardsPerPlayer = 6;
-        this.gameName = "Dungeons And Dragons Game";
-        this.numOfPlayers = 3;
-
+        super.setNumOfCardsPerPlayer(6);
+        super.setGameName("Dungeons And Dragons Game");
+        super.setNumOfPlayers(3);
     }  
     public DungeonsAndDragonsGame(int numOfCardsPerPlayer) {
-        this.numOfCardsPerPlayer = numOfCardsPerPlayer;
-        this.gameName = "Dungeons And Dragons Game";
-        this.numOfPlayers = 3;
+        super.setNumOfCardsPerPlayer(numOfCardsPerPlayer);
+        super.setGameName("Dungeons And Dragons Game");
+        super.setNumOfPlayers(3);
     }
 
     @Override
