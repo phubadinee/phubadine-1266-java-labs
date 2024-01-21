@@ -1,15 +1,26 @@
 package mehom.phubadine.lab6;
 
+/*
+ * Rock Paper Scissor Game 
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
+
 public class RockPaperScissorGame extends Game{
+    // Build Variable
     protected String player1Choice;
     protected String player2Choice;
 
+    // Default constructor
     public RockPaperScissorGame() {
         super.setGameName("Rock Paper Scissor Game");
         super.setNumOfPlayers(2);
         this.player1Choice = this.player2Choice = "rock";
     }
 
+
+    // Parameter Constructor  Initialize player1Choice and player2Choice
     public RockPaperScissorGame(String player1Choice, String player2Choice) {
         super.setGameName("Rock Paper Scissor Game");
         super.setNumOfPlayers(2);

@@ -4,6 +4,8 @@ public abstract class Game {
     protected String gameName;
     protected int numOfPlayers;
 
+
+    // Defualt Constructor
     public Game() {
         this.gameName = "unknown game";
         this.numOfPlayers = 0;
@@ -33,9 +35,10 @@ public abstract class Game {
 
     @Override
     public String toString() {
-        return " ";
+        return this.getGameName() + " numOfPlayers : " + this.getNumOfPlayers();
     }
 
+    // Abstract for inherited
     public abstract void playGame();
 
 }

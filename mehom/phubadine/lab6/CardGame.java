@@ -4,6 +4,7 @@ public abstract class CardGame extends Game {
     protected int numOfCardsPerPlayer;
 
     public CardGame() {
+        super();
         this.numOfCardsPerPlayer = 0;
     }
 
@@ -22,9 +23,10 @@ public abstract class CardGame extends Game {
 
     @Override
     public String toString() {
-        return "";
+        return "numOfCardsPerPlayer" + getNumOfCardsPerPlayer();
     }
 
+    // Abstract for inherited
     public abstract void playGame();
 
 }

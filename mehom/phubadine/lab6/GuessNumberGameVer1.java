@@ -1,9 +1,19 @@
 package mehom.phubadine.lab6;
 
+/*
+ * GuessNumberGameVer1
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
+
 public class GuessNumberGameVer1 extends Game {
+
+    // Build Variable
     protected int minNum, maxNum, maxTries;
     protected int correctNum;
 
+    // Defualt Constructor
     public GuessNumberGameVer1() {
         super.setGameName("Guess Number Game");
         super.setNumOfPlayers(1);
@@ -13,6 +23,7 @@ public class GuessNumberGameVer1 extends Game {
         this.correctNum = minNum + (int)(Math.random() * ((maxNum - minNum) + 1));
     }
 
+    // Parameter Constructor  Initialize minNum, maxNum
     public GuessNumberGameVer1(int minNum, int maxNum) {
         super.setGameName("Guess Number Game");
         super.setNumOfPlayers(1);
@@ -21,7 +32,8 @@ public class GuessNumberGameVer1 extends Game {
         this.maxTries = 3;
         this.correctNum = minNum + (int)(Math.random() * ((maxNum - minNum) + 1));
     }
-    
+       
+    // Parameter Constructor  Initialize minNum, maxNum, maxTries
     public GuessNumberGameVer1(int minNum, int maxNum, int maxTries) {
         super.setGameName("Guess Number Game");
         super.setNumOfPlayers(1);

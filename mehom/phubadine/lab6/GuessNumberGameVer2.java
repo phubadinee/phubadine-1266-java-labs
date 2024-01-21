@@ -1,10 +1,20 @@
 package mehom.phubadine.lab6;
 
+/*
+ * GuessNumberGameVer2
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
+
 public class GuessNumberGameVer2 extends GuessNumberGameVer1 implements HasRule{
+    
+    // Defualt Constructor
     public GuessNumberGameVer2() {
         super();
     }
 
+    // Parameter Constructor  Initialize minNum, maxNum
     public GuessNumberGameVer2(int minNum, int maxNum, int maxTries) {
         super(minNum, maxNum, maxTries);
     }
@@ -16,7 +26,7 @@ public class GuessNumberGameVer2 extends GuessNumberGameVer1 implements HasRule{
 
     @Override 
     public String toString() {
-        return "Gueses Number Game Version 2 : " + 
+        return this.getGameName() + " Version 2 : " + 
         "{ gameName='" + this.getGameName() + 
         "', numOfPlayers='" + this.getNumOfPlayers() +
         "'}{ minNum='" + this.getMinNum() +
@@ -28,9 +38,6 @@ public class GuessNumberGameVer2 extends GuessNumberGameVer1 implements HasRule{
     
     @Override
     public void gameRule() {
-        System.out.println("Guess Number Game Rules: ...");
+        System.out.println(this.getGameName() + " Rules : ...");
     }
-
-
-
 }
