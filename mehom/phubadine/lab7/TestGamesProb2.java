@@ -3,7 +3,7 @@ package mehom.phubadine.lab7;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class TestGamesProb1 {
+public class TestGamesProb2 {
     static ArrayList<GuessNumberGameVer4> games = new ArrayList<GuessNumberGameVer4>();
 
     public static void printGamesList(String msg) {
@@ -22,7 +22,7 @@ public class TestGamesProb1 {
     }
 
     public static void sortGamesList() {
-        Collections.sort(games, new SortByMaxTries());
+        Collections.sort(games, new SortByMaxTriesGuessRange());
         printGamesList("===== Sorted games list: =====");
     }
 
@@ -31,3 +31,4 @@ public class TestGamesProb1 {
         sortGamesList();
     }
 }
+

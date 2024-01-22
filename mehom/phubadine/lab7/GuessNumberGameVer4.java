@@ -4,7 +4,6 @@ import mehom.phubadine.lab5.GuessNumberGameVer3;
 
 public class GuessNumberGameVer4 extends GuessNumberGameVer3 {
     
-
     public GuessNumberGameVer4() {
         super();
     }

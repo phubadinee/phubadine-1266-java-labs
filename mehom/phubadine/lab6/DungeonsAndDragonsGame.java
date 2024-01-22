@@ -1,7 +1,8 @@
 package mehom.phubadine.lab6;
 
 /*
- * DungeonsAndDragonsGame
+ * Dungeons And Dragons Game
+ * 
  * Auther : Phubadine Mehom 
  * ID : 663040126-6
  * Sec : 1 
@@ -16,14 +17,14 @@ public class DungeonsAndDragonsGame extends CardGame implements HasRule, UseBoar
         super.setNumOfPlayers(3);
     }  
 
-    // Constructor specifying the number of cards per player
+    // Parameter Constructor  Initialize numOfCardsPerPlayer
     public DungeonsAndDragonsGame(int numOfCardsPerPlayer) {
         super.setNumOfCardsPerPlayer(numOfCardsPerPlayer);
         super.setGameName("Dungeons And Dragons Game");
         super.setNumOfPlayers(3);
     }
 
-    
+    // Display gameName, numOfPlayers and numOfCardsPerPlayer
     @Override
     public String toString() {
         return this.getGameName() + " : " + 

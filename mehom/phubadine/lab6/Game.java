@@ -1,9 +1,10 @@
 package mehom.phubadine.lab6;
 
 public abstract class Game {
+
+    // Build Variable
     protected String gameName;
     protected int numOfPlayers;
-
 
     // Defualt Constructor
     public Game() {
@@ -11,6 +12,7 @@ public abstract class Game {
         this.numOfPlayers = 0;
     }
 
+    // Parameter Constructor  Initialize numOfGames
     public Game(String gameName, int numOfGames) {
         this.gameName = gameName;
         this.numOfPlayers = numOfGames;
