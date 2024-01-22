@@ -2,6 +2,10 @@ package mehom.phubadine.lab6;
 
 /*
  * Rock Paper Scissor Game Ver 2
+ * 
+ * Class RockPaperScissorGameVer2 is inherited from RockPaperScissorGame. 
+ * It overrides the methods toString() and playGame(). It also implements interface HasRule.
+ * 
  * Auther : Phubadine Mehom 
  * ID : 663040126-6
  * Sec : 1 

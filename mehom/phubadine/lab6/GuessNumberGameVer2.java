@@ -2,6 +2,10 @@ package mehom.phubadine.lab6;
 
 /*
  * GuessNumberGameVer2
+ * 
+ * Class GuessNumberGameVer2 is inherited from GuessNumberGameVer1. 
+ * It overrides the methods toString() and playGame(). It also implements interface HasRule.
+ * 
  * Auther : Phubadine Mehom 
  * ID : 663040126-6
  * Sec : 1 

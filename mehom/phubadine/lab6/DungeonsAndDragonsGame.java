@@ -3,6 +3,11 @@ package mehom.phubadine.lab6;
 /*
  * Dungeons And Dragons Game
  * 
+ * DungeonsAndDragonsGame is a card game inheriting from CardGame. 
+ * It implements three interfaces and has two constructors, providing 
+ * specific details for Dungeons and Dragons gameplay. This design allows for 
+ * customization within the broader card game framework.
+ * 
  * Auther : Phubadine Mehom 
  * ID : 663040126-6
  * Sec : 1 

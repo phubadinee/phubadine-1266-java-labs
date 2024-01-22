@@ -1,6 +1,10 @@
 package mehom.phubadine.lab6;
 
 /*
+ * RockPaperScissorGame is a subclass of Game representing a two-player rock-paper-scissors game. 
+ * It initializes player choices, sets game details using the superclass constructor, and provides 
+ * specific implementations for playing the game and displaying information.
+ * 
  * Rock Paper Scissor Game 
  * Auther : Phubadine Mehom 
  * ID : 663040126-6

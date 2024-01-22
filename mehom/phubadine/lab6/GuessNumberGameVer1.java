@@ -1,6 +1,13 @@
 package mehom.phubadine.lab6;
 
 /*
+ * The GuessNumberGameVer1 class is a subclass of the abstract Game class. 
+ * It introduces properties such as minNum, maxNum, maxTries, and correctNum. 
+ * It has constructors to initialize these properties, utilizing the superclass's constructor to set gameName 
+ * to "Guess Number Game" and numOfPlayers to 1. The class overrides the toString() method, leveraging the 
+ * superclass's toString() to display game information. Additionally, it overrides the playGame() method, 
+ * providing a specific implementation for playing the guess number game.
+ * 
  * GuessNumberGameVer1
  * Auther : Phubadine Mehom 
  * ID : 663040126-6

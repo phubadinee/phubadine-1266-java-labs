@@ -2,6 +2,11 @@ package mehom.phubadine.lab6;
 
 /*
  * Monopoly Game Ver 2
+ * 
+ * Class MonopolyGameVer2 is inherited from MonopolyGame. 
+ * It overrides the methods toString() and playGame(). It also implements interface HasRule, UseBoard and UseDice.
+ * 
+ *
  * Auther : Phubadine Mehom 
  * ID : 663040126-6
  * Sec : 1 

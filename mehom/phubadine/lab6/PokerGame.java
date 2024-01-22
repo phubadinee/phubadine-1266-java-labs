@@ -2,6 +2,11 @@ package mehom.phubadine.lab6;
 
 /*
  * Poker Game
+ * 
+ * PokerGame is a card game inheriting from CardGame and implementing HasRule. 
+ * It offers two constructors for game initialization, setting specific details for Poker gameplay. 
+ * This design allows for a tailored Poker game experience within the broader card game framework.
+ * 
  * Auther : Phubadine Mehom 
  * ID : 663040126-6
  * Sec : 1 

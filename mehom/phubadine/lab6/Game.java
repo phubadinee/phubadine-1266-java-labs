@@ -1,5 +1,17 @@
 package mehom.phubadine.lab6;
 
+/*
+ * The Game class is an abstract class with properties gameName (String) 
+ * and numOfPlayers (int). It has constructors for initializing these properties, 
+ * getter and setter methods, and a toString() method that outputs the game name and number of players. 
+ * Additionally, it declares an abstract method playGame(), which must be implemented by its subclasses. 
+ * This design allows for the creation of specific game types by extending the abstract Game class.
+ * 
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
+
 public abstract class Game {
 
     // Build Variable

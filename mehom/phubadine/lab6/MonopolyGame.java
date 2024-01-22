@@ -1,6 +1,12 @@
 package mehom.phubadine.lab6;
 
 /*
+ * MonopolyGame is a subclass of Game representing a Monopoly game. 
+ * It introduces the gamePieces array to store players' pieces and provides 
+ * constructors to initialize the game. The class overrides the playGame() method and 
+ * uses the superclass's toString() for displaying game information. This allows for 
+ * specific Monopoly game instances within the broader framework of the abstract Game class.
+ * 
  * Monopoly Game
  * Auther : Phubadine Mehom 
  * ID : 663040126-6
