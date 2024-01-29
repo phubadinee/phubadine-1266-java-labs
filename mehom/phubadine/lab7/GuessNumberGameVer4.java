@@ -7,7 +7,8 @@ import mehom.phubadine.lab5.GuessNumberGameVer3;
  * It includes constructors for setting the minimum and maximum numbers, as well as the maximum allowed 
  * tries. The overridden toString() method generates a formatted string displaying the game's version, along with 
  * the specified minimum and maximum numbers, and the maximum tries.
- * GuessNumberGameVer1
+ * 
+ * Guess Number Game Ver4
  * Auther : Phubadine Mehom 
  * ID : 663040126-6
  * Sec : 1 
