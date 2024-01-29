@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
  * ID : 663040126-6
  * Sec : 1 
  */
+
 public class PlayerFormV2 extends PlayerFormV1 {
 
     // Panel for the note section
@@ -54,7 +55,8 @@ public class PlayerFormV2 extends PlayerFormV1 {
 
         // ScrollPane Config
         JTextArea txtArea = new JTextArea(3, 35);
-        txtArea.setText("Thailand will face Oman at the Abdullah bin Khalifa Stadium in Doha, Qatar, on Sunday in their second match of the 2023 AFC Asian Cup, Group F.\n");
+        txtArea.setText(
+                "Thailand will face Oman at the Abdullah bin Khalifa Stadium in Doha, Qatar, on Sunday in their second match of the 2023 AFC Asian Cup, Group F.\n");
         txtArea.setLineWrap(true);
         txtArea.setWrapStyleWord(true);
         JScrollPane scrollPane = new JScrollPane(txtArea);
@@ -67,8 +69,7 @@ public class PlayerFormV2 extends PlayerFormV1 {
 
     // Overridden method to add components to the contentPane
     @Override
-    protected void addComponents(Container contentPane) { 
-
+    protected void addComponents(Container contentPane) {
         addTopPanelComponents();
         addComboType();
         noteComponent();
@@ -77,8 +78,8 @@ public class PlayerFormV2 extends PlayerFormV1 {
         contentPane.setLayout(new BorderLayout());
         contentPane.add(topPanel, BorderLayout.NORTH);
         contentPane.add(notePanel, BorderLayout.CENTER);
-        contentPane.add(buttonPanel, BorderLayout.SOUTH); 
-        JPanel[] setPanel = {topPanel, notePanel, buttonPanel};
+        contentPane.add(buttonPanel, BorderLayout.SOUTH);
+        JPanel[] setPanel = { topPanel, notePanel, buttonPanel };
         setMargin(setPanel, 7);
     }
 

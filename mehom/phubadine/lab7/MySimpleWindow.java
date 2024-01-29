@@ -37,7 +37,7 @@ public class MySimpleWindow extends JFrame {
         // Add buttons to buttonPanel
         buttonPanel.add(resetButton);
         buttonPanel.add(submitButton);
-        
+
         // Set FlowLayout for the contentPane and add buttonPanel
         contentPane.setLayout(new FlowLayout());
         contentPane.add(buttonPanel);
@@ -49,7 +49,7 @@ public class MySimpleWindow extends JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
     }
 
     // Method to create and show the GUI
@@ -69,8 +69,5 @@ public class MySimpleWindow extends JFrame {
                 createAndShowGUI();
             }
         });
-        
     }
-
-    
 }
