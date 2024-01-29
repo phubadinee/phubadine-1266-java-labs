@@ -1,6 +1,8 @@
 package mehom.phubadine.lab7;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 
 public class PlayerFormV1 extends MySimpleWindow {
@@ -14,29 +16,41 @@ public class PlayerFormV1 extends MySimpleWindow {
         super(title);
     }
 
-    protected void topPanelComponents() {
+    protected void setMargin(JPanel panel1, JPanel panel2, int margin) {
+        panel1.setBorder(new EmptyBorder(margin, margin, margin, margin));
+        panel2.setBorder(new EmptyBorder(margin, margin, margin, margin));
+    }
+
+    protected void configFormLabel() {
         // Config Label and TextField
         nameLabel = new JLabel("Name:");
         nationalityLabel = new JLabel("Nationality");
         dataOfBirthLabel = new JLabel("Date of Birth (eg.,31-01-2005):"); 
         genderLabel = new JLabel("Gender:");
+    }
 
+    protected void configFormTextField() {
         nameTextField = new JTextField();
         nationalityTextField = new JTextField();
         dataOfBirthTextField = new JTextField();
-        
-        maleRadioButton = new JRadioButton("Male", false);
-        femaleRadioButton = new JRadioButton("Female", true);
+    }
 
+    protected JPanel radioFormButton() {
         // Radio Button Config
         ButtonGroup genderGroup = new ButtonGroup();
+        maleRadioButton = new JRadioButton("Male", false);
+        femaleRadioButton = new JRadioButton("Female", true);
         genderGroup.add(maleRadioButton);
         genderGroup.add(femaleRadioButton);
         
         genderRadio = new JPanel();
         genderRadio.add(maleRadioButton);
         genderRadio.add(femaleRadioButton);
-        
+        return genderRadio;
+
+    }
+
+    protected void addTopPanelComponents() {
         // Top Panel Config
         topPanel = new JPanel();
         topPanel.setLayout(new GridLayout(4, 2, 5, 5));
@@ -47,7 +61,7 @@ public class PlayerFormV1 extends MySimpleWindow {
         topPanel.add(dataOfBirthLabel);
         topPanel.add(dataOfBirthTextField);
         topPanel.add(genderLabel);
-        topPanel.add(genderRadio);
+        topPanel.add(radioFormButton());
     }
 
     protected void confirmButtons() {
@@ -60,13 +74,15 @@ public class PlayerFormV1 extends MySimpleWindow {
 
     @Override
     protected void addComponents(Container contentPane) { 
-        topPanelComponents();
+        configFormLabel();
+        configFormTextField();
+        addTopPanelComponents();
         confirmButtons();
 
+        setMargin(topPanel, buttonPanel, 7);
         // Add Panel to ContentPane
         contentPane.setLayout(new BorderLayout());
         contentPane.add(topPanel, BorderLayout.NORTH);
-        // contentPane.add(genderRadioPanel, BorderLayout.CENTER);
         contentPane.add(buttonPanel, BorderLayout.SOUTH); 
     }
 

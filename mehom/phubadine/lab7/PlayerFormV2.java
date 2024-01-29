@@ -5,13 +5,20 @@ import java.awt.*;
 import javax.swing.border.EmptyBorder;
 
 public class PlayerFormV2 extends PlayerFormV1 {
-    static JPanel largPanel;
+
+    JPanel notePanel;
 
     public PlayerFormV2(String title) {
         super(title);
     }
 
-    protected void addLastComponent() {
+    protected void setMargin(JPanel panel1, JPanel panel2, JPanel panel3, int margin) {
+        panel1.setBorder(new EmptyBorder(margin, margin, margin, margin));
+        panel2.setBorder(new EmptyBorder(margin, margin, margin, margin));
+        panel3.setBorder(new EmptyBorder(margin, margin, margin, margin));
+    }
+
+    protected void addComboType() {
         JLabel playerTypLabel = new JLabel("Player Type:");
         JComboBox<String> typesCombo = new JComboBox<String>();
 
@@ -19,41 +26,38 @@ public class PlayerFormV2 extends PlayerFormV1 {
         typesCombo.addItem("Amateur");
         typesCombo.addItem("Professional");
         typesCombo.setSelectedItem("Amateur");
+
         topPanel.setLayout(new GridLayout(5, 2, 5, 5));
         topPanel.add(playerTypLabel);
         topPanel.add(typesCombo);
-        
     }
 
-    @Override
-    protected void addComponents(Container contentPane) { 
-        
+    protected void noteComponent() {
         JLabel noteLabel = new JLabel("Note:");
-    
+
         // ScrollPane Config
-        // JTextArea txtArea = new JTextArea(3, 35);
-        JTextArea txtArea = new JTextArea(2, 35);
-        txtArea.setText("Thailand will face Oman at the Abdullah bin Khalifa Stadium in Doha, Qatar, on Sunday in their second match of the 2023 AFC Asian Cup, Group F.");
+        JTextArea txtArea = new JTextArea(3, 35);
+        txtArea.setText("Thailand will face Oman at the Abdullah bin Khalifa Stadium in Doha, Qatar, on Sunday in their second match of the 2023 AFC Asian Cup, Group F.\n");
         txtArea.setLineWrap(true);
         txtArea.setWrapStyleWord(true);
         JScrollPane scrollPane = new JScrollPane(txtArea);
 
-        JPanel notePanel = new JPanel(new BorderLayout());
+        notePanel = new JPanel(new BorderLayout());
         notePanel.add(noteLabel, BorderLayout.WEST);
         notePanel.add(scrollPane, BorderLayout.SOUTH);
-        // JPanel notePanel = new JPanel(new GridLayout(2, 1));
-        // notePanel.add(noteLabel);
-        // notePanel.add(scrollPane);
+    }
+    @Override
+    protected void addComponents(Container contentPane) { 
 
-        topPanelComponents();
-        addLastComponent();
+        configFormLabel();
+        configFormTextField();
+        addTopPanelComponents();
+        addComboType();
+        noteComponent();
         confirmButtons();
 
-        int margin = 10;
-        topPanel.setBorder(new EmptyBorder(margin, margin, margin, margin));
-        notePanel.setBorder(new EmptyBorder(margin, margin, margin, margin));
-        buttonPanel.setBorder(new EmptyBorder(margin, margin, margin, margin));
-
+        setMargin(topPanel, buttonPanel, notePanel, 7);
+        
         // Add Panel to ContentPane
         contentPane.setLayout(new BorderLayout());
         contentPane.add(topPanel, BorderLayout.NORTH);
