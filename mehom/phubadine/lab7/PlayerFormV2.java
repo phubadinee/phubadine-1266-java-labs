@@ -6,7 +6,7 @@ import javax.swing.border.EmptyBorder;
 
 public class PlayerFormV2 extends PlayerFormV1 {
 
-    JPanel notePanel;
+    public JPanel notePanel;
 
     public PlayerFormV2(String title) {
         super(title);
@@ -42,10 +42,16 @@ public class PlayerFormV2 extends PlayerFormV1 {
         txtArea.setWrapStyleWord(true);
         JScrollPane scrollPane = new JScrollPane(txtArea);
 
+        // notePanel = new JPanel(new BorderLayout());
+        // notePanel.add(noteLabel, BorderLayout.WEST);
+        // notePanel.add(scrollPane, BorderLayout.SOUTH);
+        
         notePanel = new JPanel(new BorderLayout());
         notePanel.add(noteLabel, BorderLayout.WEST);
         notePanel.add(scrollPane, BorderLayout.SOUTH);
+
     }
+
     @Override
     protected void addComponents(Container contentPane) { 
 
@@ -56,13 +62,15 @@ public class PlayerFormV2 extends PlayerFormV1 {
         noteComponent();
         confirmButtons();
 
-        setMargin(topPanel, buttonPanel, notePanel, 7);
+        
         
         // Add Panel to ContentPane
         contentPane.setLayout(new BorderLayout());
         contentPane.add(topPanel, BorderLayout.NORTH);
         contentPane.add(notePanel, BorderLayout.CENTER);
         contentPane.add(buttonPanel, BorderLayout.SOUTH); 
+        JPanel[] setPanel = {topPanel, notePanel, buttonPanel};
+        setMargin(setPanel, 7);
     }
 
     public static void createAndShowGUI() {

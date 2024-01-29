@@ -40,7 +40,6 @@ public class MatrixOperations {
         stat = 0;
         int menu = displayOption();
         runOption(menu);
-
     }
 
     // Function Menu for  get input rows and column

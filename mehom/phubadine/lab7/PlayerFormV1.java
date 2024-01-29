@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
+import java.lang.reflect.Array;
+import java.util.List;
 
 public class PlayerFormV1 extends MySimpleWindow {
 
@@ -16,9 +18,10 @@ public class PlayerFormV1 extends MySimpleWindow {
         super(title);
     }
 
-    protected void setMargin(JPanel panel1, JPanel panel2, int margin) {
-        panel1.setBorder(new EmptyBorder(margin, margin, margin, margin));
-        panel2.setBorder(new EmptyBorder(margin, margin, margin, margin));
+    protected void setMargin(JPanel[] panel, int margin) {
+        for (JPanel subPanel : panel) {
+            subPanel.setBorder(new EmptyBorder(margin, margin, margin, margin));
+        }
     }
 
     protected void configFormLabel() {
@@ -78,12 +81,12 @@ public class PlayerFormV1 extends MySimpleWindow {
         configFormTextField();
         addTopPanelComponents();
         confirmButtons();
-
-        setMargin(topPanel, buttonPanel, 7);
         // Add Panel to ContentPane
         contentPane.setLayout(new BorderLayout());
         contentPane.add(topPanel, BorderLayout.NORTH);
         contentPane.add(buttonPanel, BorderLayout.SOUTH); 
+        JPanel[] setPanel = {topPanel, buttonPanel};
+        setMargin(setPanel, 7);
     }
 
     // @Override
@@ -93,7 +96,6 @@ public class PlayerFormV1 extends MySimpleWindow {
         msw.addComponents(mainPanel);
         msw.setContentPane(mainPanel);
         msw.setFrameFeatures();
-        // msw.setSize(500, 210);
     }
 
     public static void main(String[] args) {
