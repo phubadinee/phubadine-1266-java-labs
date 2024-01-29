@@ -4,20 +4,35 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
 
+/* 
+ * The Java class PlayerFormV2 extends PlayerFormV1 and enhances the player 
+ * information form by adding a player type combo box and a note section with a scrollable text area. 
+ * The form layout is organized using panels, and it inherits and extends 
+ * functionalities from the previous version. It includes "Reset" and "Submit" buttons, 
+ * allowing users to interact with the form to input additional information.
+ * 
+ * Player Form V2
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
 public class PlayerFormV2 extends PlayerFormV1 {
 
+    // Panel for the note section
     public JPanel notePanel;
 
     public PlayerFormV2(String title) {
         super(title);
     }
 
+    // Method to set margin for specified panels
     protected void setMargin(JPanel panel1, JPanel panel2, JPanel panel3, int margin) {
         panel1.setBorder(new EmptyBorder(margin, margin, margin, margin));
         panel2.setBorder(new EmptyBorder(margin, margin, margin, margin));
         panel3.setBorder(new EmptyBorder(margin, margin, margin, margin));
     }
 
+    // Method to add a player type combo box
     protected void addComboType() {
         JLabel playerTypLabel = new JLabel("Player Type:");
         JComboBox<String> typesCombo = new JComboBox<String>();
@@ -27,11 +42,13 @@ public class PlayerFormV2 extends PlayerFormV1 {
         typesCombo.addItem("Professional");
         typesCombo.setSelectedItem("Amateur");
 
+        // Adjusting the layout to accommodate the combo box
         topPanel.setLayout(new GridLayout(5, 2, 5, 5));
         topPanel.add(playerTypLabel);
         topPanel.add(typesCombo);
     }
 
+    // Method to add the note section with a scrollable text area
     protected void noteComponent() {
         JLabel noteLabel = new JLabel("Note:");
 
@@ -42,28 +59,20 @@ public class PlayerFormV2 extends PlayerFormV1 {
         txtArea.setWrapStyleWord(true);
         JScrollPane scrollPane = new JScrollPane(txtArea);
 
-        // notePanel = new JPanel(new BorderLayout());
-        // notePanel.add(noteLabel, BorderLayout.WEST);
-        // notePanel.add(scrollPane, BorderLayout.SOUTH);
-        
+        // Panel for the note section
         notePanel = new JPanel(new BorderLayout());
         notePanel.add(noteLabel, BorderLayout.WEST);
         notePanel.add(scrollPane, BorderLayout.SOUTH);
-
     }
 
+    // Overridden method to add components to the contentPane
     @Override
     protected void addComponents(Container contentPane) { 
 
-        configFormLabel();
-        configFormTextField();
         addTopPanelComponents();
         addComboType();
         noteComponent();
         confirmButtons();
-
-        
-        
         // Add Panel to ContentPane
         contentPane.setLayout(new BorderLayout());
         contentPane.add(topPanel, BorderLayout.NORTH);
@@ -73,6 +82,7 @@ public class PlayerFormV2 extends PlayerFormV1 {
         setMargin(setPanel, 7);
     }
 
+    // Method to create and show the GUI
     public static void createAndShowGUI() {
         PlayerFormV2 msw = new PlayerFormV2("Player Form V2");
         mainPanel = new JPanel();
@@ -81,6 +91,7 @@ public class PlayerFormV2 extends PlayerFormV1 {
         msw.setFrameFeatures();
     }
 
+    // Main method to invoke GUI creation in the Event Dispatch Thread
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override

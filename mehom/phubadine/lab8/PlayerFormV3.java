@@ -63,8 +63,6 @@ public class PlayerFormV3 extends PlayerFormV2 {
     @Override
     protected void addComponents(Container contentPane) {
         addMenus();
-        configFormLabel();
-        configFormTextField();
         addTopPanelComponents();
         addComboType();
         noteComponent();

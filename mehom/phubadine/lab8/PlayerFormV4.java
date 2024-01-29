@@ -4,7 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PlayerFormV4 extends PlayerFormV3 {
-    protected JPanel hobbiesPanel, sportPanel;
+    protected JPanel hobbiesPanel, sportPanel, sliderPanel;
+    protected JSlider yearSlider;
 
     public PlayerFormV4(String title) {
         super(title);
@@ -44,16 +45,30 @@ public class PlayerFormV4 extends PlayerFormV3 {
         sportPanel.add(sportLabel);
         sportPanel.add(sportList);
     }
+
+    protected void addSlider() {
+        sliderPanel = new JPanel();
+        sliderPanel.setLayout(new GridLayout(2, 1));
+
+        JLabel yearExperienceOfSport = new JLabel("Year of experience in this sport:");
+        yearSlider = new JSlider(JSlider.HORIZONTAL, 0, 20, 0);  
+        yearSlider.setMinorTickSpacing(2);  
+        yearSlider.setMajorTickSpacing(5);  
+        yearSlider.setPaintTicks(true);  
+        yearSlider.setPaintLabels(true);  
+
+        sliderPanel.add(yearExperienceOfSport);
+        sliderPanel.add(yearSlider);
+    }
     
     @Override
     protected void addComponents(Container contentPane) {
         addMenus();
-        configFormLabel();
-        configFormTextField();
         addTopPanelComponents();
         addComboType();
         addHobbies();
         addSportList();
+        addSlider();
         noteComponent();
         confirmButtons();
 
@@ -62,14 +77,15 @@ public class PlayerFormV4 extends PlayerFormV3 {
         contentPane.add(topPanel);
         contentPane.add(hobbiesPanel);
         contentPane.add(sportPanel);
+        contentPane.add(sliderPanel);
         contentPane.add(notePanel);
         contentPane.add(buttonPanel);
-        JPanel[] setPanel = {topPanel, hobbiesPanel, sportPanel, notePanel, buttonPanel};
+        JPanel[] setPanel = {topPanel, hobbiesPanel, sportPanel, sliderPanel, notePanel, buttonPanel};
         setMargin(setPanel, 7);
     }
 
     public static void createAndShowGUI() {
-        PlayerFormV4 msw = new PlayerFormV4("Player Form V4");
+        PlayerFormV4 msw = new PlayerFormV4("Player Form V4");    
         mainPanel = new JPanel();
         msw.addComponents(mainPanel);
         msw.setContentPane(mainPanel);
