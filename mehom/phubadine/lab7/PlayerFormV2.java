@@ -62,7 +62,7 @@ public class PlayerFormV2 extends PlayerFormV1 {
         JScrollPane scrollPane = new JScrollPane(txtArea);
 
         // Panel for the note section
-        notePanel = new JPanel(new GridLayout(2, 1, -18, -18));
+        notePanel = new JPanel(new GridLayout(2, 1, -10, -10));
         notePanel.add(noteLabel);
         notePanel.add(scrollPane);
     }
