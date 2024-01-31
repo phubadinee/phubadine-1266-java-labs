@@ -52,7 +52,7 @@ public class PlayerFormV4 extends PlayerFormV3 {
 
         JLabel yearExperienceOfSport = new JLabel("Year of experience in this sport:");
         yearSlider = new JSlider(JSlider.HORIZONTAL, 0, 20, 0);  
-        yearSlider.setMinorTickSpacing(2);  
+        yearSlider.setMinorTickSpacing(1);  
         yearSlider.setMajorTickSpacing(5);  
         yearSlider.setPaintTicks(true);  
         yearSlider.setPaintLabels(true);  
@@ -80,7 +80,8 @@ public class PlayerFormV4 extends PlayerFormV3 {
         contentPane.add(sliderPanel);
         contentPane.add(notePanel);
         contentPane.add(buttonPanel);
-        JPanel[] setPanel = {topPanel, hobbiesPanel, sportPanel, sliderPanel, notePanel, buttonPanel};
+        // JPanel[] setPanel = {topPanel, hobbiesPanel, sportPanel, sliderPanel, notePanel, buttonPanel};
+        JPanel[] setPanel = {hobbiesPanel, sportPanel, sliderPanel};
         setMargin(setPanel, 7);
     }
 

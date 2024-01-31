@@ -104,9 +104,9 @@ public class PlayerFormV1 extends MySimpleWindow {
         addTopPanelComponents();
         confirmButtons();
         // Add Panel to ContentPane
-        contentPane.setLayout(new BorderLayout());
-        contentPane.add(topPanel, BorderLayout.NORTH);
-        contentPane.add(buttonPanel, BorderLayout.SOUTH);
+        contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
+        contentPane.add(topPanel);
+        contentPane.add(buttonPanel);
         JPanel[] setPanel = { topPanel, buttonPanel };
         setMargin(setPanel, 7);
     }

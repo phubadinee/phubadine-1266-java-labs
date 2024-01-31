@@ -75,9 +75,9 @@ public class PlayerFormV2 extends PlayerFormV1 {
         noteComponent();
         confirmButtons();
         // Add Panel to ContentPane
-        contentPane.setLayout(new BorderLayout());
-        contentPane.add(topPanel, BorderLayout.NORTH);
-        contentPane.add(notePanel, BorderLayout.CENTER);
+        contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
+        contentPane.add(topPanel);
+        contentPane.add(notePanel);
         contentPane.add(buttonPanel, BorderLayout.SOUTH);
         JPanel[] setPanel = { topPanel, notePanel, buttonPanel };
         setMargin(setPanel, 7);
