@@ -80,8 +80,7 @@ public class PlayerFormV4 extends PlayerFormV3 {
         contentPane.add(sliderPanel);
         contentPane.add(notePanel);
         contentPane.add(buttonPanel);
-        // JPanel[] setPanel = {topPanel, hobbiesPanel, sportPanel, sliderPanel, notePanel, buttonPanel};
-        JPanel[] setPanel = {hobbiesPanel, sportPanel, sliderPanel};
+        JPanel[] setPanel = {topPanel, hobbiesPanel, sportPanel, sliderPanel, notePanel, buttonPanel};
         setMargin(setPanel, 7);
     }
 

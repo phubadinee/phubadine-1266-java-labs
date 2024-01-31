@@ -62,9 +62,9 @@ public class PlayerFormV2 extends PlayerFormV1 {
         JScrollPane scrollPane = new JScrollPane(txtArea);
 
         // Panel for the note section
-        notePanel = new JPanel(new BorderLayout());
-        notePanel.add(noteLabel, BorderLayout.WEST);
-        notePanel.add(scrollPane, BorderLayout.SOUTH);
+        notePanel = new JPanel(new GridLayout(2, 1, -18, -18));
+        notePanel.add(noteLabel);
+        notePanel.add(scrollPane);
     }
 
     // Overridden method to add components to the contentPane
@@ -78,7 +78,7 @@ public class PlayerFormV2 extends PlayerFormV1 {
         contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
         contentPane.add(topPanel);
         contentPane.add(notePanel);
-        contentPane.add(buttonPanel, BorderLayout.SOUTH);
+        contentPane.add(buttonPanel);
         JPanel[] setPanel = { topPanel, notePanel, buttonPanel };
         setMargin(setPanel, 7);
     }
