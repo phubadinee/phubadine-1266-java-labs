@@ -63,25 +63,14 @@ public class PlayerFormV4 extends PlayerFormV3 {
     
     @Override
     protected void addComponents(Container contentPane) {
-        addMenus();
-        addTopPanelComponents();
-        addComboType();
+        super.addComponents(contentPane);
         addHobbies();
         addSportList();
         addSlider();
-        noteComponent();
-        confirmButtons();
-
-        // Add Panel to ContentPane
-        contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
-        contentPane.add(topPanel);
-        contentPane.add(hobbiesPanel);
-        contentPane.add(sportPanel);
-        contentPane.add(sliderPanel);
-        contentPane.add(notePanel);
-        contentPane.add(buttonPanel);
-        JPanel[] setPanel = {topPanel, hobbiesPanel, sportPanel, sliderPanel, notePanel, buttonPanel};
-        setMargin(setPanel, 7);
+        
+        contentPane.add(hobbiesPanel, 1);
+        contentPane.add(sportPanel, 2);
+        contentPane.add(sliderPanel, 3);
     }
 
     public static void createAndShowGUI() {

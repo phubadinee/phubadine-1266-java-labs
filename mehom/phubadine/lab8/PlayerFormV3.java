@@ -38,6 +38,8 @@ public class PlayerFormV3 extends PlayerFormV2 {
         fileMenu.add(separator);
         fileMenu.add(ExitItem);
 
+        
+
         // Color Config
         colorConfig = new JMenu("Color");
 
@@ -54,6 +56,7 @@ public class PlayerFormV3 extends PlayerFormV2 {
             JMenuItem size = new JMenuItem(Integer.toString(intSize));
             sizeConfig.add(size);
         }
+
         
         configMenu.add(colorConfig);
         configMenu.add(sizeConfig);
@@ -62,20 +65,8 @@ public class PlayerFormV3 extends PlayerFormV2 {
 
     @Override
     protected void addComponents(Container contentPane) {
+        super.addComponents(contentPane);
         addMenus();
-        addTopPanelComponents();
-        addComboType();
-        noteComponent();
-        confirmButtons();
-
-
-        // Add Panel to ContentPane
-        contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
-        contentPane.add(topPanel, 0);
-        contentPane.add(notePanel, 1);
-        contentPane.add(buttonPanel, 2);
-        JPanel[] setPanel = {topPanel, notePanel, buttonPanel};
-        setMargin(setPanel, 7);
     }
 
     public static void createAndShowGUI() {
