@@ -4,20 +4,30 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.border.EmptyBorder;
-
 import mehom.phubadine.lab7.PlayerFormV2;
 
-public class PlayerFormV3 extends PlayerFormV2 {
+/* 
+ * The code defines a Swing GUI application, an extension of PlayerFormV2, named PlayerFormV3. 
+ * It includes menu bars with "File" and "Config" menus, submenus for file operations, and configuration options 
+ * for color and size. The main method initializes and displays the GUI using SwingUtilities.invokeLater.
+ * 
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
 
+public class PlayerFormV3 extends PlayerFormV2 {
+    
+    // Declare menu components
     protected JMenuBar menuBar;
     protected JMenu fileMenu, configMenu, colorConfig, sizeConfig;
 
     public PlayerFormV3(String title) {
         super(title);
     }
-
+    
+    // Add menus to the form
     protected void addMenus() {
         // Intialize Menu
         menuBar = new JMenuBar();     
@@ -38,8 +48,6 @@ public class PlayerFormV3 extends PlayerFormV2 {
         fileMenu.add(separator);
         fileMenu.add(ExitItem);
 
-        
-
         // Color Config
         colorConfig = new JMenu("Color");
 
@@ -56,19 +64,20 @@ public class PlayerFormV3 extends PlayerFormV2 {
             JMenuItem size = new JMenuItem(Integer.toString(intSize));
             sizeConfig.add(size);
         }
-
         
         configMenu.add(colorConfig);
         configMenu.add(sizeConfig);
         setJMenuBar(menuBar);
     }
 
+    // Override method to add menus to the form
     @Override
     protected void addComponents(Container contentPane) {
         super.addComponents(contentPane);
         addMenus();
     }
-
+    
+    // Create and show the GUI
     public static void createAndShowGUI() {
         PlayerFormV3 msw = new PlayerFormV3("Player Form V3");
         mainPanel = new JPanel();
@@ -77,6 +86,7 @@ public class PlayerFormV3 extends PlayerFormV2 {
         msw.setFrameFeatures();
     }
 
+    // Main method to launch the application
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -85,5 +95,4 @@ public class PlayerFormV3 extends PlayerFormV2 {
             }
         });
     }
-
 }

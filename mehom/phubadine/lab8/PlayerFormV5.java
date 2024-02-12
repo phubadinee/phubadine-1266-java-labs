@@ -4,23 +4,40 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
-public class PlayerFormV5 extends PlayerFormV4 {
-    JPanel footballPanel;
-    ReadImage footballImg = new ReadImage("mehom\\phubadine\\lab8\\img\\Football.jpg");
-    ImageIcon newMenuIcon = new ImageIcon("mehom\\phubadine\\lab8\\img\\New-icon.png");
-    ImageIcon openMenuIcon = new ImageIcon("mehom\\phubadine\\lab8\\img\\Open-icon.png");
-    ImageIcon saveMenuIcon = new ImageIcon("mehom\\phubadine\\lab8\\img\\Save-icon.png");
+/* 
+ * The code defines a Swing GUI application, PlayerFormV5, extending PlayerFormV4. 
+ * It adds a panel for displaying a football image and customizes file menu icons. 
+ * The GUI includes checkboxes for hobbies, a list for sports, a slider for experience, 
+ * and an image panel for football. The main method initializes and displays the GUI using 
+ * SwingUtilities.invokeLater.
+ * 
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
 
+public class PlayerFormV5 extends PlayerFormV4 {
+    
+    // Declare an additional panel and image for football
+    JPanel footballPanel;
+    ReadImage footballImg = new ReadImage("mehom\\phubadine\\img\\Football.jpg");
+    ImageIcon newMenuIcon = new ImageIcon("mehom\\phubadine\\img\\New-icon.png");
+    ImageIcon openMenuIcon = new ImageIcon("mehom\\phubadine\\img\\Open-icon.png");
+    ImageIcon saveMenuIcon = new ImageIcon("mehom\\phubadine\\img\\Save-icon.png");
+
+    // Declare an additional panel and image for football
     public PlayerFormV5(String title) {
         super(title);
     }
 
+   // Add an image panel for football
     protected void addImage(){
         footballPanel = new JPanel();
         footballImg.setPreferredSize(new Dimension(400, 200)); 
         footballPanel.add(footballImg);
     }
 
+    // Override method to customize file menu icons
     @Override
     protected void addMenus() {
         super.addMenus();
@@ -39,14 +56,18 @@ public class PlayerFormV5 extends PlayerFormV4 {
         menuBar.add(fileMenu, 0);
     }
 
+    // Override method to add new components to the form
     @Override
     protected void addComponents(Container contentPane) {
         super.addComponents(contentPane);
         addMenus();
         addImage();
         contentPane.add(footballPanel, 5);
+        JPanel[] setPanel = {footballPanel};
+        setMargin(setPanel, 7);
     }
 
+    // Create and show the GUI
     public static void createAndShowGUI() {
         PlayerFormV5 msw = new PlayerFormV5("Player Form V5");    
         mainPanel = new JPanel();
@@ -55,6 +76,7 @@ public class PlayerFormV5 extends PlayerFormV4 {
         msw.setFrameFeatures();
     }
 
+    // Main method to launch the application
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
