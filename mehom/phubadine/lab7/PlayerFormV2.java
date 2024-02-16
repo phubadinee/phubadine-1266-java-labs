@@ -18,7 +18,7 @@ import javax.swing.border.EmptyBorder;
  */
 
 public class PlayerFormV2 extends PlayerFormV1 {
-
+    protected JComboBox<String> typesCombo;
     // Panel for the note section
     public JPanel notePanel;
 
@@ -36,7 +36,7 @@ public class PlayerFormV2 extends PlayerFormV1 {
     // Method to add a player type combo box
     protected void addComboType() {
         JLabel playerTypLabel = new JLabel("Player Type:");
-        JComboBox<String> typesCombo = new JComboBox<String>();
+        typesCombo = new JComboBox<String>();
 
         typesCombo.addItem("Beginner");
         typesCombo.addItem("Amateur");

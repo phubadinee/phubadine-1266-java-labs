@@ -6,8 +6,9 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
 public class DiceImageCanvas extends JPanel {
+
     protected int diceNumber;
-    protected Graphics2D g2d;
+    protected Graphics2D dice;
     protected Ellipse2D.Double circleCenter, circleTopRight, circleBottomLeft,
             circleTopLeft, circleBottomRight, circleTopCenter, circleBottomCenter;
     protected Rectangle2D.Double square;
@@ -40,13 +41,10 @@ public class DiceImageCanvas extends JPanel {
         int posCenterColumn = (squareWidth / 6) * 3 - (circleWidth / 2) +startSquareY;
         int posRightColumn = (squareWidth / 6) * 5 - (circleWidth / 2) + startSquareY;
 
-        
         circleTopLeft = new Ellipse2D.Double(posTopRow, posLeftColumn, circleWidth, circleHeight);
         circleTopCenter =  new Ellipse2D.Double(posCenterRow, posLeftColumn, circleWidth, circleHeight);
         circleTopRight = new Ellipse2D.Double(posBottomRow, posLeftColumn, circleWidth, circleHeight);
-
         circleCenter =  new Ellipse2D.Double(posCenterRow, posCenterColumn, circleWidth, circleHeight);
-
         circleBottomLeft = new Ellipse2D.Double(posTopRow, posRightColumn, circleWidth, circleHeight);
         circleBottomCenter =  new Ellipse2D.Double(posCenterRow, posRightColumn, circleWidth, circleHeight);
         circleBottomRight = new Ellipse2D.Double(posBottomRow, posRightColumn, circleWidth, circleHeight);
@@ -55,32 +53,32 @@ public class DiceImageCanvas extends JPanel {
     protected void drawDiceNumber() {
         // depending on a dice number, place red dots properly on a rectangle
         if (diceNumber == 1) {
-            g2d.fill(circleTopCenter);
+            dice.fill(circleTopCenter);
         } else if (diceNumber == 2){
-            g2d.fill(circleTopRight);
-            g2d.fill(circleBottomLeft);
+            dice.fill(circleTopRight);
+            dice.fill(circleBottomLeft);
         } else if (diceNumber == 3){
-            g2d.fill(circleTopRight);
-            g2d.fill(circleCenter);
-            g2d.fill(circleBottomLeft);
+            dice.fill(circleTopRight);
+            dice.fill(circleCenter);
+            dice.fill(circleBottomLeft);
         } else if (diceNumber == 4){
-            g2d.fill(circleTopRight);
-            g2d.fill(circleTopLeft);
-            g2d.fill(circleBottomLeft);
-            g2d.fill(circleBottomRight);
+            dice.fill(circleTopRight);
+            dice.fill(circleTopLeft);
+            dice.fill(circleBottomLeft);
+            dice.fill(circleBottomRight);
         } else if (diceNumber == 5){
-            g2d.fill(circleTopRight);
-            g2d.fill(circleTopLeft);
-            g2d.fill(circleCenter);
-            g2d.fill(circleBottomLeft);
-            g2d.fill(circleBottomRight);
+            dice.fill(circleTopRight);
+            dice.fill(circleTopLeft);
+            dice.fill(circleCenter);
+            dice.fill(circleBottomLeft);
+            dice.fill(circleBottomRight);
         } else if (diceNumber == 6){
-            g2d.fill(circleTopRight);
-            g2d.fill(circleTopLeft);
-            g2d.fill(circleTopCenter);
-            g2d.fill(circleBottomCenter);
-            g2d.fill(circleBottomLeft);
-            g2d.fill(circleBottomRight);
+            dice.fill(circleTopRight);
+            dice.fill(circleTopLeft);
+            dice.fill(circleTopCenter);
+            dice.fill(circleBottomCenter);
+            dice.fill(circleBottomLeft);
+            dice.fill(circleBottomRight);
         }
     }
 
@@ -88,16 +86,16 @@ public class DiceImageCanvas extends JPanel {
     public void paintComponent(Graphics g) {
         // call paintComponent of super class
         super.paintComponent(g);
-        g2d = (Graphics2D)g;
+        dice = (Graphics2D)g;
         // cast graphics object to graphics2D object
         square = new Rectangle2D.Double(startSquareX, startSquareY, squareWidth, squareHeight);
 
         // set paint to white and fill the quare
-        g2d.setColor(Color.WHITE);
-        // g2d.draw(circleTopCenter);
-        g2d.fill(square);
+        dice.setColor(Color.WHITE);
+        // dice.draw(circleTopCenter);
+        dice.fill(square);
         // call code to draw dice number
-        g2d.setColor(Color.RED);
+        dice.setColor(Color.RED);
         drawDiceNumber();
     }
 }

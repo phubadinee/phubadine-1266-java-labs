@@ -18,13 +18,13 @@ public class PlayerFormV4 extends PlayerFormV3 {
     
     // Declare additional panels and slider
     protected JPanel hobbiesPanel, sportPanel, sliderPanel;
+    protected JList sportList;
     protected JSlider yearSlider;
-
+    protected JCheckBox readingCheckBox, browsingCheckBox, sleepingCheckBox, travelingCheckBox;
     // Constructor initializes the PlayerFormV4
     public PlayerFormV4(String title) {
         super(title);
     }
-
 
     // Add hobby components to the form
     protected void addHobbies() {
@@ -36,10 +36,10 @@ public class PlayerFormV4 extends PlayerFormV3 {
         // Create checkboxes for different hobbies
         JPanel checkBoxGroup = new JPanel();
         checkBoxGroup.setLayout(new FlowLayout());
-        JCheckBox readingCheckBox = new JCheckBox("Reading");
-        JCheckBox browsingCheckBox = new JCheckBox("Browsing");
-        JCheckBox sleepingCheckBox = new JCheckBox("Sleeping", true);
-        JCheckBox travelingCheckBox = new JCheckBox("Traveling");
+        readingCheckBox = new JCheckBox("Reading");
+        browsingCheckBox = new JCheckBox("Browsing");
+        sleepingCheckBox = new JCheckBox("Sleeping", true);
+        travelingCheckBox = new JCheckBox("Traveling");
         checkBoxGroup.add(readingCheckBox);
         checkBoxGroup.add(browsingCheckBox);
         checkBoxGroup.add(sleepingCheckBox);
@@ -57,7 +57,7 @@ public class PlayerFormV4 extends PlayerFormV3 {
 
         // Create a list of sports
         String sport[]= {"Badminton", "Boxing", "Football", "Running"};
-        JList sportList = new JList(sport);
+        sportList = new JList(sport);
         sportList.setSelectedIndex(2);
 
         // Add components to the sport panel
