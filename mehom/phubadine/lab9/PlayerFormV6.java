@@ -74,8 +74,7 @@ public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, KeyLis
 
         for (JCheckBox checkBox : checkSelected) {
             if (checkBox.isSelected()) {
-                System.out.println(checkBox.getActionCommand());
-                hobbiesResult += checkBox.getActionCommand();
+                hobbiesResult += checkBox.getActionCommand() + " ";
             }
         }
         return hobbiesResult;
