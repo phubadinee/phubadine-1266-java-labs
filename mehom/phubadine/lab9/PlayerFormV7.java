@@ -2,22 +2,28 @@ package mehom.phubadine.lab9;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
-import javax.swing.JCheckBox;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.SwingUtilities;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
+/* 
+ * PlayerFormV7 extends a previous version, adding radio button and checkbox item 
+ * listeners to handle state changes. It displays messages for gender updates and 
+ * checkbox interactions, with GUI components created using Swing.
+ * 
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
+
 public class PlayerFormV7 extends PlayerFormV6 implements ItemListener {
 
+    // Constructor for PlayerFormV7, calling the constructor of the superclass PlayerFormV6
     public PlayerFormV7(String title) {
         super(title);
     }
 
+    // Method to add item listeners for radio buttons and checkboxes
     @Override
     public void addListeners() {
         super.addListeners();
@@ -29,9 +35,11 @@ public class PlayerFormV7 extends PlayerFormV6 implements ItemListener {
         sleepingCheckBox.addItemListener(this);
     }
 
+    // ItemStateChanged method to handle changes in the state of radio buttons and checkboxes
     public void itemStateChanged(ItemEvent e) {
         Object src = e.getSource();
 
+        // Check sorce state changed
         if (src == maleRadioButton && e.getStateChange() == ItemEvent.SELECTED) {
             JOptionPane.showMessageDialog(this, "Gender is updated to Male");
         } else if (src == femaleRadioButton && e.getStateChange() == ItemEvent.SELECTED) {
@@ -42,6 +50,7 @@ public class PlayerFormV7 extends PlayerFormV6 implements ItemListener {
         }
     }
 
+    // Method to handle checkbox changes with messages
     public void handleCheckBox(JCheckBox checkbox) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -55,6 +64,7 @@ public class PlayerFormV7 extends PlayerFormV6 implements ItemListener {
         });
     }
 
+    // Override method to set names for checkboxes
     @Override
     protected void addComponents(Container contentPane) {
         super.addComponents(contentPane);

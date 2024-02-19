@@ -5,8 +5,20 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
+/* 
+ * The DiceImageCanvas class in Java defines a custom JPanel for displaying a dice 
+ * with a specified number of dots. It calculates and positions ellipses to represent 
+ * dots based on the dice number and overrides the paintComponent method to draw 
+ * the dots on a white square background.
+ * 
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
+
 public class DiceImageCanvas extends JPanel {
 
+    // Variables to store information about the dice and graphical elements
     protected int diceNumber;
     protected Graphics2D dice;
     protected Ellipse2D.Double circleCenter, circleTopRight, circleBottomLeft,
@@ -20,17 +32,13 @@ public class DiceImageCanvas extends JPanel {
     protected int startSquareY = 40;
     protected int margin = 10;
 
+    // Constructor to initialize the DiceImageCanvas with a specified dice number
     public DiceImageCanvas(int diceNumber) {
-        // initialize dice number
         this.diceNumber = diceNumber;
-        // set size with width canvasWidth and height canvasHeight
-
-        // initialize a square which is a background
-
-        // call method createCircles to place dots on a rectangle
         createCircles();
     }
 
+    // Method to create and position circles based on dice layout
     protected void createCircles() {
         // initialize different types of circles (circleCenter, circleTopRight, ...)
         int posTopRow = (squareHeight / 6) * 1 - (circleHeight / 2) + startSquareX;
@@ -52,8 +60,9 @@ public class DiceImageCanvas extends JPanel {
 
     protected void drawDiceNumber() {
         // depending on a dice number, place red dots properly on a rectangle
+        System.out.println(diceNumber);
         if (diceNumber == 1) {
-            dice.fill(circleTopCenter);
+            dice.fill(circleCenter);
         } else if (diceNumber == 2){
             dice.fill(circleTopRight);
             dice.fill(circleBottomLeft);
@@ -89,7 +98,6 @@ public class DiceImageCanvas extends JPanel {
         dice = (Graphics2D)g;
         // cast graphics object to graphics2D object
         square = new Rectangle2D.Double(startSquareX, startSquareY, squareWidth, squareHeight);
-
         // set paint to white and fill the quare
         dice.setColor(Color.WHITE);
         // dice.draw(circleTopCenter);

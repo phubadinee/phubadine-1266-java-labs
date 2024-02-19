@@ -8,16 +8,32 @@ import java.awt.*;
 import java.util.*;
 import javax.swing.*;
 
+/* 
+ * The PlayerFormV6 class extends a previous version and implements a player 
+ * information form with buttons, text fields, radio buttons, checkboxes, 
+ * and event listeners. It captures user input, handles button clicks, and displays 
+ * player details, including hobbies and selected sports. The GUI is created using 
+ * Swing components.
+ * 
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
+
 public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, KeyListener {
+    
+    // Variables for storing gender result, itemSelectable, hobbiesArrayList, and an array of selected checkboxes
     protected String genderResult;
     protected ItemSelectable itemSelectable;
     protected ArrayList<String> hobbiesArrayList= new ArrayList<String>();
     protected JCheckBox[] checkSelected;
 
+    // Constructor for PlayerFormV6, calling the constructor of the superclass PlayerFormV5
     public PlayerFormV6(String title) {
         super(title);
     }
 
+    // Method to add action listeners for buttons and key listeners for text fields
     public void addListeners() {
         submitButton.addActionListener(this);
         resetButton.addActionListener(this);
@@ -26,6 +42,7 @@ public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, KeyLis
         dataOfBirthTextField.addKeyListener(this);
     }
 
+    // ActionPerformed method to handle button clicks
     @Override 
     public void actionPerformed(ActionEvent e) {
         Object srcObject = e.getSource();
@@ -53,9 +70,10 @@ public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, KeyLis
         }
     }
 
+    // KeyPressed method to handle Enter key events on text fields
     public void keyPressed(KeyEvent e) {
         JTextField source = (JTextField) e.getSource();
-        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {      // When ENTER pressed
             if (source.getName().equals("nameTextField")) {
                 JOptionPane.showMessageDialog(this, "Name is changed to " + nameTextField.getText());
             } else if (source.getName().equals("nationalityTextField")) {
@@ -65,9 +83,11 @@ public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, KeyLis
             }
         }
     }
+
     public void keyReleased(KeyEvent e) {}
     public void keyTyped(KeyEvent e) {}
 
+    // Method to concatenate selected checkboxes into a string
     public String checkBoxSelected() {
         String hobbiesResult = "";
         checkSelected = new JCheckBox[]{readingCheckBox, browsingCheckBox, sleepingCheckBox, travelingCheckBox};
@@ -80,6 +100,7 @@ public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, KeyLis
         return hobbiesResult;
     }
 
+    // Override method to add components and set names for text fields
     @Override
     protected void addComponents(Container contentPane) {
         super.addComponents(contentPane);
