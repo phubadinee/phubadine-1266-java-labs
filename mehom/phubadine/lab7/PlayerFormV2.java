@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 
 public class PlayerFormV2 extends PlayerFormV1 {
     protected JComboBox<String> typesCombo;
+    protected JTextArea txtArea;
     // Panel for the note section
     public JPanel notePanel;
 
@@ -54,7 +55,7 @@ public class PlayerFormV2 extends PlayerFormV1 {
         JLabel noteLabel = new JLabel("Note:");
 
         // ScrollPane Config
-        JTextArea txtArea = new JTextArea(3, 35);
+        txtArea = new JTextArea(3, 35);
         txtArea.setText(
                 "Thailand will face Oman at the Abdullah bin Khalifa Stadium in Doha, Qatar, on Sunday in their second match of the 2023 AFC Asian Cup, Group F.\n");
         txtArea.setLineWrap(true);

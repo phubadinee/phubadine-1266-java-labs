@@ -22,6 +22,7 @@ public class PlayerFormV3 extends PlayerFormV2 {
     // Declare menu components
     protected JMenuBar menuBar;
     protected JMenu fileMenu, configMenu, colorConfig, sizeConfig;
+    protected JMenuItem redColor, greenColor, blueColor, size16, size20, size24;
 
     public PlayerFormV3(String title) {
         super(title);
@@ -50,20 +51,22 @@ public class PlayerFormV3 extends PlayerFormV2 {
 
         // Color Config
         colorConfig = new JMenu("Color");
-
-        String[] colorObject = {"Red", "Green", "Blue"};
-        for (int range = 0 ; range< colorObject.length; range++) {
-            JMenuItem size = new JMenuItem(colorObject[range]);
-            colorConfig.add(size);
-        }
+        redColor = new JMenuItem("Red");
+        greenColor = new JMenuItem("Green");
+        blueColor = new JMenuItem("Blue");
+        colorConfig.add(redColor);
+        colorConfig.add(greenColor);
+        colorConfig.add(blueColor);
+        
 
         // Size Config
         sizeConfig = new JMenu("Size");
-        for (int range = 0 ; range<3 ; range++) {
-            int intSize = 16 + (4*range);
-            JMenuItem size = new JMenuItem(Integer.toString(intSize));
-            sizeConfig.add(size);
-        }
+        size16 = new JMenuItem(Integer.toString(16));
+        size20 = new JMenuItem(Integer.toString(20));
+        size24 = new JMenuItem(Integer.toString(24));
+        sizeConfig.add(size16);
+        sizeConfig.add(size20);
+        sizeConfig.add(size24);
         
         configMenu.add(colorConfig);
         configMenu.add(sizeConfig);
