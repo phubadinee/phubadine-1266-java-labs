@@ -60,7 +60,6 @@ public class DiceImageCanvas extends JPanel {
 
     protected void drawDiceNumber() {
         // depending on a dice number, place red dots properly on a rectangle
-        System.out.println(diceNumber);
         if (diceNumber == 1) {
             dice.fill(circleCenter);
         } else if (diceNumber == 2){
