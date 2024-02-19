@@ -2,18 +2,17 @@ package mehom.phubadine.lab9;
 
 import mehom.phubadine.lab8.PlayerFormV5;
 import java.awt.event.*;
-import java.util.ArrayList;
-import java.awt.ItemSelectable;
+import java.security.PublicKey;
+import java.util.List;
+import java.awt.*;
+import java.util.*;
+import javax.swing.*;
 
-import javax.swing.JCheckBox;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
-public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, ItemListener {
+public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, KeyListener {
     protected String genderResult;
     protected ItemSelectable itemSelectable;
     protected ArrayList<String> hobbiesArrayList= new ArrayList<String>();
+    protected JCheckBox[] checkSelected;
 
     public PlayerFormV6(String title) {
         super(title);
@@ -21,10 +20,10 @@ public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, ItemLi
 
     public void addListeners() {
         submitButton.addActionListener(this);
-        readingCheckBox.addItemListener(this);
-        browsingCheckBox.addItemListener(this);
-        sleepingCheckBox.addItemListener(this);
-        travelingCheckBox.addItemListener(this);
+        resetButton.addActionListener(this);
+        nameTextField.addKeyListener(this);
+        nationalityTextField.addKeyListener(this);
+        dataOfBirthTextField.addKeyListener(this);
     }
 
     @Override 
@@ -32,7 +31,7 @@ public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, ItemLi
         Object srcObject = e.getSource();
         if (srcObject == submitButton) {
             String name = nameTextField.getText();
-            String national = nationalityTextField.getText();
+            String nationality = nationalityTextField.getText();
             String birth = dataOfBirthTextField.getText();
 
             if (maleRadioButton.isSelected()) {
@@ -40,33 +39,54 @@ public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, ItemLi
             } else {
                 genderResult = femaleRadioButton.getText();
             }
+
             String playerType = (String) typesCombo.getSelectedItem();
-            String sportType = (String) sportList.getSelectedValue();
-            JOptionPane.showMessageDialog(this, name +" has nationality as "+ national + " and was born on "+ birth + 
-            ", has gender as " + genderResult + " is a "+ playerType + " player, has hobbies as " + displayHobbies(hobbiesArrayList) +
-            sportType);
+            String hobbies = checkBoxSelected();
+            List sports = (List) sportList.getSelectedValuesList();
+
+            JOptionPane.showMessageDialog(this, name +" has nationality as " + nationality + " and was born on " + birth + ", has gender as " + 
+            genderResult + ", is a " + playerType + " player, has hobbies as " + hobbies + " and plays " + sports );
+        } else if (srcObject == resetButton) {
+            nameTextField.setText("");
+            nationalityTextField.setText("");
+            dataOfBirthTextField.setText("");
         }
     }
 
-    public void itemStateChanged(ItemEvent e) {
-        JCheckBox srcItem = (JCheckBox) e.getItemSelectable();
-        String hobbiesSelected = srcItem.getActionCommand();
-
-        if (e.getStateChange() == ItemEvent.SELECTED) {
-            hobbiesArrayList.add(hobbiesSelected);
-            // System.out.println("selected " + hobbiesSelected);
-        } else {
-            hobbiesArrayList.remove(hobbiesSelected);
-            // System.out.println("deSelected " + hobbiesSelected);
+    public void keyPressed(KeyEvent e) {
+        JTextField source = (JTextField) e.getSource();
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (source.getName().equals("nameTextField")) {
+                JOptionPane.showMessageDialog(this, "Name is changed to " + nameTextField.getText());
+            } else if (source.getName().equals("nationalityTextField")) {
+                JOptionPane.showMessageDialog(this, "Nationality is changed to " + nationalityTextField.getText());
+            } else if (source.getName().equals("dataOfBirthTextField")) {
+                JOptionPane.showMessageDialog(this, "Date of Birth is changed to " + dataOfBirthTextField.getText());
+            }
         }
     }
+    public void keyReleased(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {}
 
-    public String displayHobbies(ArrayList<String> hobbieslist) {
+    public String checkBoxSelected() {
         String hobbiesResult = "";
-        for (String val : hobbieslist) {
-            hobbiesResult += val + " ";
+        checkSelected = new JCheckBox[]{readingCheckBox, browsingCheckBox, sleepingCheckBox, travelingCheckBox};
+
+        for (JCheckBox checkBox : checkSelected) {
+            if (checkBox.isSelected()) {
+                System.out.println(checkBox.getActionCommand());
+                hobbiesResult += checkBox.getActionCommand();
+            }
         }
         return hobbiesResult;
+    }
+
+    @Override
+    protected void addComponents(Container contentPane) {
+        super.addComponents(contentPane);
+        nameTextField.setName("nameTextField");
+        nationalityTextField.setName("nationalityTextField");
+        dataOfBirthTextField.setName("dataOfBirthTextField");
     }
 
     // Create and show the GUI
