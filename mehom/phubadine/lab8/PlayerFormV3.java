@@ -22,8 +22,8 @@ public class PlayerFormV3 extends PlayerFormV2 {
     // Declare menu components
     protected JMenuBar menuBar;
     protected JMenu fileMenu, configMenu, colorConfig, sizeConfig;
-    protected JMenuItem redColor, greenColor, blueColor, size16, size20, size24;
-
+    protected JMenuItem newItem, openItem, saveItem, ExitItem, redColor, greenColor, blueColor, size16, size20, size24;
+    protected JSeparator separator;
     public PlayerFormV3(String title) {
         super(title);
     }
@@ -38,11 +38,11 @@ public class PlayerFormV3 extends PlayerFormV2 {
         menuBar.add(configMenu);
 
         // File Menu
-        JMenuItem newItem = new JMenuItem("New");
-        JMenuItem openItem = new JMenuItem("Open");
-        JMenuItem saveItem = new JMenuItem("Save");
-        JSeparator separator = new JSeparator();
-        JMenuItem ExitItem = new JMenuItem("Exit");
+        newItem = new JMenuItem("New");
+        openItem = new JMenuItem("Open");
+        saveItem = new JMenuItem("Save");
+        separator = new JSeparator();
+        ExitItem = new JMenuItem("Exit");
         fileMenu.add(newItem);
         fileMenu.add(openItem);
         fileMenu.add(saveItem);

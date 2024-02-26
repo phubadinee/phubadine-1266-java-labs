@@ -19,11 +19,12 @@ import java.io.File;
 public class PlayerFormV5 extends PlayerFormV4 {
     
     // Declare an additional panel and image for football
-    JPanel footballPanel;
-    ReadImage footballImg = new ReadImage("mehom\\phubadine\\img\\Football.jpg");
-    ImageIcon newMenuIcon = new ImageIcon("mehom\\phubadine\\img\\New-icon.png");
-    ImageIcon openMenuIcon = new ImageIcon("mehom\\phubadine\\img\\Open-icon.png");
-    ImageIcon saveMenuIcon = new ImageIcon("mehom\\phubadine\\img\\Save-icon.png");
+    protected JPanel footballPanel;
+    protected JMenuItem newItem, openItem, saveItem, ExitItem;
+    protected ReadImage footballImg = new ReadImage("mehom\\phubadine\\img\\Football.jpg");
+    protected ImageIcon newMenuIcon = new ImageIcon("mehom\\phubadine\\img\\New-icon.png");
+    protected ImageIcon openMenuIcon = new ImageIcon("mehom\\phubadine\\img\\Open-icon.png");
+    protected ImageIcon saveMenuIcon = new ImageIcon("mehom\\phubadine\\img\\Save-icon.png");
 
     // Declare an additional panel and image for football
     public PlayerFormV5(String title) {
@@ -43,11 +44,11 @@ public class PlayerFormV5 extends PlayerFormV4 {
         super.addMenus();
         menuBar.remove(0);
         fileMenu = new JMenu("File");
-        JMenuItem newItem = new JMenuItem("New", newMenuIcon);
-        JMenuItem openItem = new JMenuItem("Open", openMenuIcon);
-        JMenuItem saveItem = new JMenuItem("Save", saveMenuIcon);
+        newItem = new JMenuItem("New", newMenuIcon);
+        openItem = new JMenuItem("Open", openMenuIcon);
+        saveItem = new JMenuItem("Save", saveMenuIcon);
         JSeparator separator = new JSeparator();
-        JMenuItem ExitItem = new JMenuItem("Exit");
+        ExitItem = new JMenuItem("Exit");
         fileMenu.add(newItem);
         fileMenu.add(openItem);
         fileMenu.add(saveItem);
