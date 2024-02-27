@@ -5,6 +5,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import java.awt.event.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import mehom.phubadine.lab10.PlayerFormV11;
 
 public class PlayerFormV12 extends PlayerFormV11 {
@@ -31,14 +35,27 @@ public class PlayerFormV12 extends PlayerFormV11 {
         if (textField.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please enter some data in " + nameTextField + textField.getText());
             textField.requestFocusInWindow();
-            nationalityTextField.setEnabled(false);
+            if (nextTextField != null) {nextTextField.setEnabled(false);}
         } else {
-            JOptionPane.showMessageDialog(this, nameTextField + " is changed to " + textField.getText());
-            if (nextTextField != null) {
-                nextTextField.setEnabled(true);
+            if (textField == dataOfBirthTextField) {
+                try {
+                    String dateString = textField.getText();
+                    System.out.println(dateString);
+                    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                    LocalDate parsedDate = LocalDate.parse(dateString, dateFormatter);
+                    JOptionPane.showMessageDialog(this, nameTextField + " is changed to " + textField.getText());
+                } catch (DateTimeParseException ex) {
+                    JOptionPane.showMessageDialog(this, "Please enter a valid date in " + nameTextField);
+                    textField.requestFocusInWindow();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, nameTextField + " is changed to " + textField.getText());
+                if (nextTextField != null) {nextTextField.requestFocusInWindow();nextTextField.setEnabled(true);}
             }
+            
         }
     }
+
     // Create and show the GUI
     public static void createAndShowGUI() {
         PlayerFormV12 msw = new PlayerFormV12("Player Form V12");
