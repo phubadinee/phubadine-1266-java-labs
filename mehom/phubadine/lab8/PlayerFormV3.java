@@ -24,6 +24,7 @@ public class PlayerFormV3 extends PlayerFormV2 {
     protected JMenu fileMenu, configMenu, colorConfig, sizeConfig;
     protected JMenuItem newItem, openItem, saveItem, ExitItem, redColor, greenColor, blueColor, size16, size20, size24;
     protected JSeparator separator;
+    
     public PlayerFormV3(String title) {
         super(title);
     }
