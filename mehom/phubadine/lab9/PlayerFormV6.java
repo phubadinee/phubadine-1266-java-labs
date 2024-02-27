@@ -23,10 +23,11 @@ import javax.swing.*;
 public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, KeyListener {
     
     // Variables for storing gender result, itemSelectable, hobbiesArrayList, and an array of selected checkboxes
-    protected String genderResult;
+    protected String genderResult, name, nationality, birth, playerType, hobbies;
     protected ItemSelectable itemSelectable;
     protected ArrayList<String> hobbiesArrayList= new ArrayList<String>();
     protected JCheckBox[] checkSelected;
+    protected List sports;
 
     // Constructor for PlayerFormV6, calling the constructor of the superclass PlayerFormV5
     public PlayerFormV6(String title) {
@@ -47,19 +48,20 @@ public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, KeyLis
     public void actionPerformed(ActionEvent e) {
         Object srcObject = e.getSource();
         if (srcObject == submitButton) {
-            String name = nameTextField.getText();
-            String nationality = nationalityTextField.getText();
-            String birth = dataOfBirthTextField.getText();
+            name = nameTextField.getText();
+            nationality = nationalityTextField.getText();
+            birth = dataOfBirthTextField.getText();
 
+            
             if (maleRadioButton.isSelected()) {
                 genderResult = maleRadioButton.getText();
             } else {
                 genderResult = femaleRadioButton.getText();
             }
 
-            String playerType = (String) typesCombo.getSelectedItem();
-            String hobbies = checkBoxSelected();
-            List sports = (List) sportList.getSelectedValuesList();
+            playerType = (String) typesCombo.getSelectedItem();
+            hobbies = checkBoxSelected();
+            sports = (List) sportList.getSelectedValuesList();
 
             JOptionPane.showMessageDialog(this, name +" has nationality as " + nationality + " and was born on " + birth + ", has gender as " + 
             genderResult + ", is a " + playerType + " player, has hobbies as " + hobbies + " and plays " + sports );
