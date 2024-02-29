@@ -39,6 +39,7 @@ public class PlayerFormV7 extends PlayerFormV6 implements ItemListener {
     public void itemStateChanged(ItemEvent e) {
         Object src = e.getSource();
 
+        
         // Check sorce state changed
         if (src == maleRadioButton && e.getStateChange() == ItemEvent.SELECTED) {
             JOptionPane.showMessageDialog(this, "Gender is updated to Male");

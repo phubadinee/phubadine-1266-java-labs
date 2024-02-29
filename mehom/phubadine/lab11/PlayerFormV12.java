@@ -40,7 +40,6 @@ public class PlayerFormV12 extends PlayerFormV11 {
             if (textField == dataOfBirthTextField) {
                 try {
                     String dateString = textField.getText();
-                    System.out.println(dateString);
                     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                     LocalDate parsedDate = LocalDate.parse(dateString, dateFormatter);
                     JOptionPane.showMessageDialog(this, nameTextField + " is changed to " + textField.getText());
@@ -51,8 +50,7 @@ public class PlayerFormV12 extends PlayerFormV11 {
             } else {
                 JOptionPane.showMessageDialog(this, nameTextField + " is changed to " + textField.getText());
                 if (nextTextField != null) {nextTextField.requestFocusInWindow();nextTextField.setEnabled(true);}
-            }
-            
+            }   
         }
     }
 

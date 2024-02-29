@@ -48,28 +48,31 @@ public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, KeyLis
     public void actionPerformed(ActionEvent e) {
         Object srcObject = e.getSource();
         if (srcObject == submitButton) {
-            name = nameTextField.getText();
-            nationality = nationalityTextField.getText();
-            birth = dataOfBirthTextField.getText();
-
-            
-            if (maleRadioButton.isSelected()) {
-                genderResult = maleRadioButton.getText();
-            } else {
-                genderResult = femaleRadioButton.getText();
-            }
-
-            playerType = (String) typesCombo.getSelectedItem();
-            hobbies = checkBoxSelected();
-            sports = (List) sportList.getSelectedValuesList();
-
-            JOptionPane.showMessageDialog(this, name +" has nationality as " + nationality + " and was born on " + birth + ", has gender as " + 
-            genderResult + ", is a " + playerType + " player, has hobbies as " + hobbies + " and plays " + sports );
+            JOptionPane.showMessageDialog(this, getValue());
         } else if (srcObject == resetButton) {
             nameTextField.setText("");
             nationalityTextField.setText("");
             dataOfBirthTextField.setText("");
         }
+    }
+
+    public String getValue() {
+        name = nameTextField.getText();
+        nationality = nationalityTextField.getText();
+        birth = dataOfBirthTextField.getText();
+
+        if (maleRadioButton.isSelected()) {
+            genderResult = maleRadioButton.getText();
+        } else {
+            genderResult = femaleRadioButton.getText();
+        }
+
+        playerType = (String) typesCombo.getSelectedItem();
+        hobbies = checkBoxSelected();
+        sports = (List) sportList.getSelectedValuesList();
+
+        return name +" has nationality as " + nationality + " and was born on " + birth + ", has gender as " + 
+            genderResult + ", is a " + playerType + " player, has hobbies as " + hobbies + " and plays " + sports;
     }
 
     // KeyPressed method to handle Enter key events on text fields
