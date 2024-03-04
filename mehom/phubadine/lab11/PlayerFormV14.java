@@ -4,9 +4,13 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 
 import javax.swing.ButtonGroup;
@@ -25,6 +29,7 @@ public class PlayerFormV14 extends PlayerFormV13{
 
     protected JMenu fillMenu;
     protected JRadioButtonMenuItem yesRadioMenuItem, noRadioMenuItem;
+    protected int toggleFill;
 
     public PlayerFormV14(String title) {
         super(title);
@@ -35,7 +40,6 @@ public class PlayerFormV14 extends PlayerFormV13{
         super.addListeners();
         yesRadioMenuItem.addItemListener(this);
         noRadioMenuItem.addItemListener(this);
-
     }
 
     @Override
@@ -53,20 +57,65 @@ public class PlayerFormV14 extends PlayerFormV13{
         fillMenu.add(yesRadioMenuItem);
         fillMenu.add(noRadioMenuItem);
         menuBar.add(fillMenu);
-
     }
 
-    // @Override 
-    // public void itemStateChanged(ItemEvent e) {
-    //     super.itemStateChanged(e);
-    //     Object src = e.getSource();
-    //     System.out.println("state");
-    //     JRadioButtonMenuItem eventSource = (JRadioButtonMenuItem) e.getSource();
-    //     System.out.println("State");
-    //     if (eventSource.isSelected()) {
-    //         System.out.println(eventSource.getText());
-    //     }
-    // }
+    public void openFileHandle(JFileChooser fc) {
+        File file = fc.getSelectedFile();
+        String filePath = file.getAbsolutePath();
+        JOptionPane.showMessageDialog(this, "Opening file " + file.getAbsolutePath()); 
+
+        try {
+            // if (toggleFill == 1) {
+                   
+            // } else {
+            FileReader fr = new FileReader(filePath);
+            BufferedReader r = new BufferedReader(fr);
+            String line;
+            String res = "";
+            while ((line = r.readLine()) != null) {
+                // System.out.print(line);
+                res += line;
+            }
+            r.close();
+            fr.close();
+            // }
+            
+            JOptionPane.showMessageDialog(this, "Data read from file " + file.getAbsolutePath() + "\n"
+            + res); 
+        }  catch (IOException e) {
+            e.printStackTrace(System.err);
+        }
+    }
+
+    @Override
+    public void writeFileHandle(JFileChooser fc) {
+        File file = fc.getSelectedFile();
+        String filePath = file.getAbsolutePath();
+        try {
+            if (toggleFill == 1) {
+                Player player = new Player();
+                player.setName(name);
+                player.setNationality(nationality);
+                player.setDob(birth);
+                player.setPlayerType(playerType);
+                player.setHobbies(hobbies);
+                player.setSports(sports);
+
+                FileOutputStream fos = new FileOutputStream(file);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(player);
+                oos.close();
+                fos.close();
+            } else {
+                PrintWriter p = new PrintWriter(new FileWriter(filePath));
+                p.print(getValue());
+                p.close();
+            }
+            JOptionPane.showMessageDialog(this, "Saving in file " + file.getAbsolutePath());
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        }
+    }
 
     @Override
     public void itemStateChanged(ItemEvent e) {
@@ -83,10 +132,11 @@ public class PlayerFormV14 extends PlayerFormV13{
 
     public void handleFillMenu(String fillState) {
         if (fillState.equals("Yes")) {
-            Player player = new Player();
-            System.out.println("Fill - Yes ");
+            System.out.println("1");
+            toggleFill = 1;
         } else if (fillState.equals("No")) {
-            System.err.println("Fill - No");
+            System.out.println("0");
+            toggleFill = 0;
         }
     }
 
@@ -98,43 +148,12 @@ public class PlayerFormV14 extends PlayerFormV13{
         if (fileItem == openItem) {
             int returnVal = fc.showOpenDialog(PlayerFormV14.this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-                File file = fc.getSelectedFile();
-                String filePath = file.getAbsolutePath();
-                JOptionPane.showMessageDialog(this, "Opening file " + file.getAbsolutePath()); 
-
-                try {
-                    FileReader fr = new FileReader(filePath);
-                    BufferedReader r = new BufferedReader(fr);
-                    String line;
-                    String res = "";
-                    while ((line = r.readLine()) != null) {
-                        // System.out.print(line);
-                        res += line;
-                    }
-                    r.close();
-                    fr.close();
-                    JOptionPane.showMessageDialog(this, "Data read from file " + file.getAbsolutePath() + "\n"
-                    + res); 
-                }  catch (IOException e) {
-                    System.err.println("Error saving content to the file: " + e.getMessage());
-                }
+                openFileHandle(fc);
             } 
-
         } else if (fileItem == saveItem) {
             int returnVal = fc.showSaveDialog(PlayerFormV14.this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-                File file = fc.getSelectedFile();
-                String filePath = file.getAbsolutePath();
-
-                try {
-                    PrintWriter p = new PrintWriter(new FileWriter(filePath));
-                    p.print(getValue());
-                    p.close();
-                    JOptionPane.showMessageDialog(this, "Saving in file " + file.getAbsolutePath());
-                } catch (IOException e) {
-                    System.err.println("Error saving content to the file: " + e.getMessage());
-                }
-                 
+                writeFileHandle(fc); 
             } 
         }
     }

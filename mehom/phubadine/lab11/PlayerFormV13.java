@@ -20,6 +20,43 @@ public class PlayerFormV13 extends PlayerFormV12 {
         super(title);
     }
 
+    public void openFileHandle(JFileChooser fc) {
+        File file = fc.getSelectedFile();
+        String filePath = file.getAbsolutePath();
+        JOptionPane.showMessageDialog(this, "Opening file " + file.getAbsolutePath()); 
+
+        try {
+            FileReader fr = new FileReader(filePath);
+            BufferedReader r = new BufferedReader(fr);
+            String line;
+            String res = "";
+            while ((line = r.readLine()) != null) {
+                // System.out.print(line);
+                res += line;
+            }
+            r.close();
+            fr.close();
+            JOptionPane.showMessageDialog(this, "Data read from file " + file.getAbsolutePath() + "\n"
+            + res); 
+        }  catch (IOException e) {
+            e.printStackTrace(System.err);
+        }
+    }
+
+    public void writeFileHandle(JFileChooser fc) {
+        File file = fc.getSelectedFile();
+        String filePath = file.getAbsolutePath();
+
+        try {
+            PrintWriter p = new PrintWriter(new FileWriter(filePath));
+            p.print(getValue());
+            p.close();
+            JOptionPane.showMessageDialog(this, "Saving in file " + file.getAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace(System.err);
+        }
+    }
+
     @Override 
     public void handleFileMenu(JMenuItem fileItem) {
         // super.handleFileMenu(fileItem);
@@ -27,43 +64,12 @@ public class PlayerFormV13 extends PlayerFormV12 {
         if (fileItem == openItem) {
             int returnVal = fc.showOpenDialog(PlayerFormV13.this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-                File file = fc.getSelectedFile();
-                String filePath = file.getAbsolutePath();
-                JOptionPane.showMessageDialog(this, "Opening file " + file.getAbsolutePath()); 
-
-                try {
-                    FileReader fr = new FileReader(filePath);
-                    BufferedReader r = new BufferedReader(fr);
-                    String line;
-                    String res = "";
-                    while ((line = r.readLine()) != null) {
-                        // System.out.print(line);
-                        res += line;
-                    }
-                    r.close();
-                    fr.close();
-                    JOptionPane.showMessageDialog(this, "Data read from file " + file.getAbsolutePath() + "\n"
-                    + res); 
-                }  catch (IOException e) {
-                    System.err.println("Error saving content to the file: " + e.getMessage());
-                }
-
+                openFileHandle(fc);
             } 
         } else if (fileItem == saveItem) {
             int returnVal = fc.showSaveDialog(PlayerFormV13.this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-                File file = fc.getSelectedFile();
-                String filePath = file.getAbsolutePath();
-
-                try {
-                    PrintWriter p = new PrintWriter(new FileWriter(filePath));
-                    p.print(getValue());
-                    p.close();
-                    JOptionPane.showMessageDialog(this, "Saving in file " + file.getAbsolutePath());
-                } catch (IOException e) {
-                    System.err.println("Error saving content to the file: " + e.getMessage());
-                }
-                 
+                writeFileHandle(fc);   
             } 
         }
     }
