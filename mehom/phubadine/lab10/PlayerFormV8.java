@@ -26,7 +26,7 @@ import mehom.phubadine.lab9.PlayerFormV7;
 
 public class PlayerFormV8 extends PlayerFormV7 implements ListSelectionListener {
     ListSelectionModel listSelectionModel;
-
+    protected List<String> selectionSportValues;
     // Constructor
     public PlayerFormV8(String title) {
         super(title);
@@ -46,7 +46,7 @@ public class PlayerFormV8 extends PlayerFormV7 implements ListSelectionListener 
         boolean adjust = e.getValueIsAdjusting();
         if (!adjust) {
             // Get selected values from the JList
-            List<String> selectionSportValues = sportList.getSelectedValuesList();
+            selectionSportValues = sportList.getSelectedValuesList();
             
             // Create a string with the selected sports
             String valueOfSports = "";

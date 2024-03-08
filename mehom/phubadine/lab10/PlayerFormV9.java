@@ -19,7 +19,7 @@ import javax.swing.event.ChangeListener;
  */
 
 public class PlayerFormV9 extends PlayerFormV8 implements ChangeListener {
-    
+    protected int value;
     // Constructor
     public PlayerFormV9(String title) {
         super(title);
@@ -40,7 +40,7 @@ public class PlayerFormV9 extends PlayerFormV8 implements ChangeListener {
         // Check if the value is no longer adjusting
         if (!adjust) {
             // Get the selected value from the JSlider
-            int value = yearSlider.getValue();
+            value = yearSlider.getValue();
             // Display a message with the selected year of experience
             JOptionPane.showMessageDialog(this, "Year of experience in this sport is " + value); 
         }

@@ -26,9 +26,10 @@ public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, KeyLis
     protected String genderResult, name, nationality, birth, playerType, hobbies;
     protected ItemSelectable itemSelectable;
     protected ArrayList<String> hobbiesArrayList= new ArrayList<String>();
+    protected ArrayList<JCheckBox> hobbieJCheckBoxs = new ArrayList<JCheckBox>();
     protected JCheckBox[] checkSelected;
     protected List sports;
-
+    protected int[] sportIndex;
     // Constructor for PlayerFormV6, calling the constructor of the superclass PlayerFormV5
     public PlayerFormV6(String title) {
         super(title);
@@ -70,7 +71,8 @@ public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, KeyLis
         playerType = (String) typesCombo.getSelectedItem();
         hobbies = checkBoxSelected();
         sports = (List) sportList.getSelectedValuesList();
-
+        sportIndex = sportList.getSelectedIndices();
+        // sportSelectedObj = sportList.get
         return name +" has nationality as " + nationality + " and was born on " + birth + ", has gender as " + 
             genderResult + ", is a " + playerType + " player, has hobbies as " + hobbies + " and plays " + sports;
     }
@@ -100,6 +102,7 @@ public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, KeyLis
         for (JCheckBox checkBox : checkSelected) {
             if (checkBox.isSelected()) {
                 hobbiesResult += checkBox.getActionCommand() + " ";
+                hobbieJCheckBoxs.add(checkBox);
             }
         }
         return hobbiesResult;
