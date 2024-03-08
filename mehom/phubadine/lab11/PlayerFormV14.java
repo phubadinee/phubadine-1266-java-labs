@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
@@ -24,12 +25,15 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.SwingUtilities;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class PlayerFormV14 extends PlayerFormV13{
 
     protected JMenu fillMenu;
     protected JRadioButtonMenuItem yesRadioMenuItem, noRadioMenuItem;
     protected int toggleFill;
+
+    protected Player player;
 
     public PlayerFormV14(String title) {
         super(title);
@@ -59,32 +63,76 @@ public class PlayerFormV14 extends PlayerFormV13{
         menuBar.add(fillMenu);
     }
 
+    public void fillForm(Player player) {
+        nameTextField.setText(player.getName());
+        nationalityTextField.setText(player.getNationality());
+        dataOfBirthTextField.setText(player.getDob());
+        
+        if (player.getGenderResult().equals("Male")) {
+            maleRadioButton.setSelected(true);
+        } else {
+            femaleRadioButton.setSelected(true);
+        }
+
+        typesCombo.setSelectedIndex(player.getPlayerIndex());
+        
+        String[] hobbiesSplit = player.getHobbies().split(" ");
+        for (String checkBox : hobbiesSplit) {
+           if (checkBox.equals("Reading")) {
+            readingCheckBox.setSelected(true);
+           } else if (checkBox.equals("Browsing")) {
+            browsingCheckBox.setSelected(true);
+           } else if (checkBox.equals("Sleeping")) {
+            sleepingCheckBox.setSelected(true);
+           } else  if (checkBox.equals("Traveling")) {
+            travelingCheckBox.setSelected(true);
+           }
+        }
+        sportList.setSelectedIndices(player.getSportIndex());
+        yearSlider.setValue(player.getYear());
+    }
+
     public void openFileHandle(JFileChooser fc) {
         File file = fc.getSelectedFile();
         String filePath = file.getAbsolutePath();
         JOptionPane.showMessageDialog(this, "Opening file " + file.getAbsolutePath()); 
 
-        try {
-            // if (toggleFill == 1) {
-                   
-            // } else {
-            FileReader fr = new FileReader(filePath);
-            BufferedReader r = new BufferedReader(fr);
-            String line;
-            String res = "";
-            while ((line = r.readLine()) != null) {
-                // System.out.print(line);
-                res += line;
-            }
-            r.close();
-            fr.close();
-            // }
+        if (toggleFill == 1) {
+            try {
+                FileInputStream fis = new FileInputStream(file);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                player  = (Player) ois.readObject();
+
+                fillForm(player);
+
+                ois.close();
+                fis.close();
+            } catch (ClassNotFoundException classNotFoundEx) {
+                classNotFoundEx.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace(System.err);
+            } 
             
-            JOptionPane.showMessageDialog(this, "Data read from file " + file.getAbsolutePath() + "\n"
-            + res); 
-        }  catch (IOException e) {
-            e.printStackTrace(System.err);
+        } else {
+            try {
+                FileReader fr = new FileReader(filePath);
+                BufferedReader r = new BufferedReader(fr);
+                String line;
+                String res = "";
+                while ((line = r.readLine()) != null) {
+                    // System.out.print(line);
+                    res += line;
+                }
+                r.close();
+                fr.close();
+                
+                JOptionPane.showMessageDialog(this, "Data read from file " + file.getAbsolutePath() + "\n"
+                + res); 
+            } catch (IOException e) {
+                e.printStackTrace(System.err);
+            }
         }
+       
     }
 
     @Override
@@ -93,13 +141,9 @@ public class PlayerFormV14 extends PlayerFormV13{
         String filePath = file.getAbsolutePath();
         try {
             if (toggleFill == 1) {
-                Player player = new Player();
-                player.setName(name);
-                player.setNationality(nationality);
-                player.setDob(birth);
-                player.setPlayerType(playerType);
-                player.setHobbies(hobbies);
-                player.setSports(sports);
+                getValue();
+                int playerIndex = typesCombo.getSelectedIndex();
+                player = new Player(name, nationality, birth, playerIndex, genderResult, hobbies, sportIndex, value);
 
                 FileOutputStream fos = new FileOutputStream(file);
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
