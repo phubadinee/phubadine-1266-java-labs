@@ -1,26 +1,38 @@
 package mehom.phubadine.lab11;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import javax.swing.JCheckBox;
+import java.util.*;
+import javax.swing.*;
 
 
+/* 
+ * The Java code defines a serializable Player class with attributes like name, nationality, and sports information. 
+ * It includes constructors, getter methods, and a overridden toString method for meaningful representation.
+ * 
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
+
+
+// Player class implementing Serializable for object serialization
 public class Player implements Serializable {
+    // Instance variables to store player information=
     String name, nationality, dob, playerType, genderResult, hobbies;
     int playerIndex;
     ArrayList<JCheckBox> hobbiesList;
     List<String> sports;
+    List sporList;
     int[] sportIndex;
     int year;
 
+    // Default constructor
     public Player() {
 
     }
 
-    public Player(String name, String nationality, String dob, int playerIndex, String genderResult, String hobbies, int[] sportsIndex, int year) {
+    // Parameterized constructor to initialize player information
+    public Player(String name, String nationality, String dob, String playerType, int playerIndex, String genderResult, String hobbies, int[] sportsIndex, int year, List sportList) {
         this.name = name;
         this.nationality = nationality;
         this.dob = dob;
@@ -30,6 +42,7 @@ public class Player implements Serializable {
         this.hobbies = hobbies;
         this.sportIndex = sportsIndex;
         this.year = year;
+        this.sporList = sportList;
     }
 
     public String getName() {
@@ -67,47 +80,25 @@ public class Player implements Serializable {
     public int getYear() {
         return this.year;
     }
+
+    public List getSportList() {
+        return this.sporList;
+    }
     
-    // public void setName(String name) {
-    //     this.name = name;
-    // }
-
-    // public void setNationality(String nationality) {
-    //     this.nationality = nationality;
-    // }
-
-    // public void setDob(String dob) {
-    //     this.dob = dob;
-    // }
-
-    // public void setGenderResult(String genderResult) {
-    //     this.genderResult = genderResult;
-    // }
-
-    // public void setPlayerType(String playerType) {
-    //     this.playerType = playerType;
-    // }
-
-    // public void setHobbies(ArrayList<JCheckBox> hobbies) {
-    //     this.hobbies = hobbies;
-    // }
-
-    // public void setSports(List sports) {
-    //     this.sports = sports;
-    // }
-
     public void setYear(int year) {
         this.year = year;
     }
 
-
+    // Override toString method for meaningful representation of the object
     @Override
 	public String toString() {
-        // return name +" has nationality as " + nationality + " and was born on " + dob + ", has gender as " + 
-        // genderResult + ", is a " + playerType + " player, has hobbies as " + hobbies + " and plays " + sports;
-
-        return this.getName() +" has nationality as " + this.getNationality() + " and was born on " + this.getDob() + ", has gender as " + 
-        this.getGenderResult() + ", is a " + this.getPlayerType();
+        return this.getName() + 
+        " has nationality as " + this.getNationality() + 
+        " and was born on " + this.getDob() + 
+        ", has gender as " + this.getGenderResult() + 
+        ", is a " + this.getPlayerType() + 
+        " player, has hobbies as " + this.getHobbies() + 
+        " and plays " + this.getSportList() + 
+        " and has experience years as " + this.getYear();
     }
-
 }

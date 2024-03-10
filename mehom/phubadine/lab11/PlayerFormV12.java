@@ -1,9 +1,6 @@
 package mehom.phubadine.lab11;
 
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 import java.awt.event.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,12 +8,24 @@ import java.time.format.DateTimeParseException;
 
 import mehom.phubadine.lab10.PlayerFormV11;
 
-public class PlayerFormV12 extends PlayerFormV11 {
+/* 
+ * The Java code defines a class PlayerFormV12 that extends another class and implements key event handling 
+ * for text fields, validating and displaying messages based on user input. The main method launches 
+ * a Swing GUI application for a player form with version 12.
+ * 
+ * Auther : Phubadine Mehom 
+ * ID : 663040126-6
+ * Sec : 1 
+ */
 
+public class PlayerFormV12 extends PlayerFormV11 {
+    
+    // Constructor for PlayerFormV12
     public PlayerFormV12(String title) {
         super(title);
     }
 
+    // Override keyPressed method to handle key events
     @Override 
     public void keyPressed(KeyEvent e) {
         JTextField source = (JTextField) e.getSource();
@@ -31,6 +40,7 @@ public class PlayerFormV12 extends PlayerFormV11 {
         }
     }
 
+    // Method to check if a text field is empty and show appropriate message
     public void checkEmptyTextField(JTextField textField, JTextField nextTextField, String nameTextField) {
         if (textField.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please enter some data in " + nameTextField + textField.getText());
