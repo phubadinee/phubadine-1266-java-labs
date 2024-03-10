@@ -141,7 +141,7 @@ public class PlayerFormV14 extends PlayerFormV13 {
         try {
             if (toggleFill == 1) {
                 getValue();
-
+                int playerIndex = typesCombo.getSelectedIndex();
                 player = new Player(name, nationality, birth, playerType, playerIndex, genderResult, hobbies,
                         sportIndex, value, sports);
 

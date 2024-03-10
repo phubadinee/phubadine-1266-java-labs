@@ -30,6 +30,7 @@ public class PlayerFormV6 extends PlayerFormV5 implements ActionListener, KeyLis
     protected JCheckBox[] checkSelected;
     protected List sports;
     protected int[] sportIndex;
+
     // Constructor for PlayerFormV6, calling the constructor of the superclass PlayerFormV5
     public PlayerFormV6(String title) {
         super(title);
